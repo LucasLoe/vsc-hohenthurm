@@ -13,7 +13,7 @@ export default async function BlogList({
 	predefinedFilters,
 }: Partial<{
 	intro: any
-	layout: 'grid' | 'carousel'
+	layout: 'grid' | 'carousel' | 'vsc-paginated'
 	limit: number
 	displayFilters: boolean
 	predefinedFilters: Sanity.BlogCategory[]
@@ -29,25 +29,21 @@ export default async function BlogList({
 		},
 	)
 
+	const currentLayout = stegaClean(layout) || 'vsc-paginated'
+
 	return (
-		<section className="section space-y-8">
+		<section className="section p-0">
 			{intro && (
 				<header className="richtext">
 					<PortableText value={intro} />
 				</header>
 			)}
-
 			{displayFilters && <Filtering predefinedFilters={predefinedFilters} />}
 
 			<List
+				layout={currentLayout}
 				posts={posts}
 				predefinedFilters={predefinedFilters}
-				className={cn(
-					'gap-x-6 gap-y-12',
-					stegaClean(layout) === 'grid'
-						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-						: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
-				)}
 			/>
 		</section>
 	)

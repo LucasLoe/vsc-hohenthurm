@@ -8,6 +8,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
+import NavMenu from '@/ui/navigation'
 
 export const metadata: Metadata = {
 	icons: {
@@ -24,10 +25,13 @@ export default async function RootLayout({
 		<html lang="en">
 			{/* <GoogleTagManager gtmId='' /> */}
 
-			<body className="bg-canvas text-ink">
-				<SkipToContent />
-				<Announcement />
-				<Header />
+			<body className="bg-vsc-bg-light text-vsc-bg-dark">
+				{
+					// <SkipToContent />
+					// <Announcement />
+					// <Header />
+				}
+				<NavMenu />
 				<main id="main-content" tabIndex={-1}>
 					{children}
 				</main>

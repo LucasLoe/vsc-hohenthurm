@@ -1,17 +1,25 @@
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
-import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import { Button } from '@/components/ui/button'
 
 export default function CTA({
 	link,
 	style,
-	className,
 	children,
 	...rest
 }: Sanity.CTA & React.ComponentProps<'a'>) {
+	const _style = style as
+		| 'link'
+		| 'ghost'
+		| 'default'
+		| 'destructive'
+		| 'outline'
+		| 'secondary'
+		| null
+		| undefined
+
 	const props = {
-		className: cn(style, className) || undefined,
 		children:
 			children || link?.label || link?.internal?.title || link?.external,
 		...rest,
@@ -19,13 +27,15 @@ export default function CTA({
 
 	if (link?.type === 'internal' && link.internal)
 		return (
-			<Link
-				href={processUrl(link.internal, {
-					base: false,
-					params: link.params,
-				})}
-				{...props}
-			/>
+			<Button asChild variant={_style}>
+				<Link
+					href={processUrl(link.internal, {
+						base: false,
+						params: link.params,
+					})}
+					{...props}
+				/>
+			</Button>
 		)
 
 	if (link?.type === 'external' && link.external)
