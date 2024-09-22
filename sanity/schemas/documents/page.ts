@@ -29,6 +29,7 @@ export default defineType({
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },
 				{ type: 'flag-list' },
+				{ type: 'fullscreen-hero' },
 				{ type: 'hero' },
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },
@@ -45,7 +46,10 @@ export default defineType({
 					views: [{ name: 'list' }, { name: 'grid' }],
 					groups: [
 						{ name: 'blog', of: ['blog-list', 'blog-post-content'] },
-						{ name: 'hero', of: ['hero', 'hero.saas', 'hero.split'] },
+						{
+							name: 'hero',
+							of: ['hero', 'hero.saas', 'hero.split', 'fullscreen-hero'],
+						},
 						{
 							name: 'testimonial',
 							of: ['testimonial-list', 'testimonial.featured'],

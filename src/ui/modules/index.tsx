@@ -16,6 +16,7 @@ import StatList from './StatList'
 import StepList from './StepList'
 import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
+import FullscreenHero from './FullscreenHero'
 
 export default function Modules({
 	modules,
@@ -52,6 +53,8 @@ export default function Modules({
 						return <CustomHTML {...module} key={module._key} />
 					case 'flag-list':
 						return <FlagList {...module} key={module._key} />
+					case 'fullscreen-hero':
+						return <FullscreenHero {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.split':

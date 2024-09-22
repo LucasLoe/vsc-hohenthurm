@@ -37,6 +37,7 @@ import statList from './modules/stat-list'
 import stepList from './modules/step-list'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
+import fullscreenHero from './modules/fullscreen-hero'
 
 export const schemaTypes = [
 	// documents
@@ -68,6 +69,7 @@ export const schemaTypes = [
 	creativeModule,
 	customHtml,
 	flagList,
+	fullscreenHero,
 	hero,
 	heroSaas,
 	HeroSplit,

@@ -23,7 +23,7 @@ export default defineType({
 			name: 'layout',
 			type: 'string',
 			options: {
-				list: ['grid', 'carousel'],
+				list: ['grid', 'carousel', 'vsc-paginated'],
 				layout: 'radio',
 			},
 			initialValue: 'carousel',
