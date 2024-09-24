@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import Link from 'next/link'
 
@@ -11,45 +12,57 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import Image from 'next/image'
+import { HomeIcon } from '@radix-ui/react-icons'
+import { usePathname } from 'next/navigation'
 
 const NavMenu = () => {
+	const activeUrlPath = usePathname()
+	const mainSegment = `/${activeUrlPath.split('/')[1]}`
+
+	console.log(mainSegment)
+
 	return (
-		<NavigationMenu className="bg-vsc-bg-dark h-[80px] w-full max-w-full py-2">
+		<NavigationMenu className="h-[80px] w-full max-w-full bg-vsc-bg-dark py-2">
 			<NavigationMenuList>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue data-[active]:bg-vsc-blue data-[state=open]:bg-vsc-blue active:bg-vsc-blue bg-transparent text-lg data-[state=open]:text-black">
-						Zeiten & Kontakt
-					</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-							<li className="relative row-span-3">
-								<div className="relative h-full w-full rounded">
-									<Image
-										src={'/images/navigation-image.png'}
-										alt=""
-										width={1000}
-										height={200}
-										className="h-32 w-full rounded object-cover lg:h-full"
-									/>
-									<div className="absolute inset-0 rounded bg-gradient-to-b from-pink-900/10 to-pink-900 opacity-60"></div>
-								</div>
-							</li>
-							<ListItem href="/docs" title="Introduction">
-								Re-usable components built using Radix UI and Tailwind CSS.
-							</ListItem>
-							<ListItem href="/docs/installation" title="Installation">
-								How to install dependencies and structure your app.
-							</ListItem>
-							<ListItem href="/docs/primitives/typography" title="Typography">
-								Styles for headings, paragraphs, lists...etc
-							</ListItem>
-						</ul>
-					</NavigationMenuContent>
+					<Link href="/" legacyBehavior passHref>
+						<NavigationMenuLink
+							className={cn(
+								navigationMenuTriggerStyle(),
+								'bg-transparent text-lg text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue',
+							)}
+						>
+							<HomeIcon className="size-6" />
+						</NavigationMenuLink>
+					</Link>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue data-[state=open]:bg-vsc-blue bg-transparent text-lg data-[state=open]:text-black">
-						Mixed
+					<Link href="/herren-mannschaft" legacyBehavior passHref>
+						<NavigationMenuLink
+							className={cn(
+								navigationMenuTriggerStyle(),
+								'bg-transparent text-lg text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue',
+							)}
+						>
+							Herren
+						</NavigationMenuLink>
+					</Link>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
+					<Link href="/mixed-mannschaft" legacyBehavior passHref>
+						<NavigationMenuLink
+							className={cn(
+								navigationMenuTriggerStyle(),
+								'bg-transparent text-lg text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue',
+							)}
+						>
+							Mixed
+						</NavigationMenuLink>
+					</Link>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
+					<NavigationMenuTrigger className="bg-transparent text-lg text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue data-[state=open]:bg-vsc-blue data-[state=open]:text-black">
+						###
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -66,14 +79,26 @@ const NavMenu = () => {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<Link href="/docs" legacyBehavior passHref>
+					<Link href="/zeiten-und-kontakt" legacyBehavior passHref>
 						<NavigationMenuLink
 							className={cn(
 								navigationMenuTriggerStyle(),
-								'text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue bg-transparent text-lg',
+								'bg-transparent text-lg text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue',
 							)}
 						>
-							Herren
+							Zeiten und Kontakt
+						</NavigationMenuLink>
+					</Link>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
+					<Link href="/ueber-uns" legacyBehavior passHref>
+						<NavigationMenuLink
+							className={cn(
+								navigationMenuTriggerStyle(),
+								'bg-transparent text-lg text-vsc-bg-light hover:bg-vsc-blue focus:bg-vsc-blue active:bg-vsc-blue data-[active]:bg-vsc-blue',
+							)}
+						>
+							Über uns
 						</NavigationMenuLink>
 					</Link>
 				</NavigationMenuItem>
@@ -132,7 +157,7 @@ const ListItem = React.forwardRef<
 				<a
 					ref={ref}
 					className={cn(
-						'hover:bg-vsc-blue/25 focus:bg-vsc-blue/25 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-black focus:text-black',
+						'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-vsc-blue/25 hover:text-black focus:bg-vsc-blue/25 focus:text-black',
 						className,
 					)}
 					{...props}

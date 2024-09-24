@@ -5,6 +5,8 @@ import LinkList from './LinkList'
 export default async function Menu() {
 	const { headerMenu } = await getSite()
 
+	console.log('headerMenu: ', headerMenu)
+
 	return (
 		<nav className="max-md:anim-fade-to-r flex gap-y-2 [grid-area:nav] max-md:my-4 max-md:flex-col max-md:header-closed:hidden">
 			{headerMenu?.items?.map((item, key) => {

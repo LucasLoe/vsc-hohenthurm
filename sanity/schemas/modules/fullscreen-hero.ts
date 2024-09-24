@@ -12,7 +12,6 @@ export default defineType({
 			title: 'Hero Text Lines',
 			type: 'array',
 			of: [{ type: 'string' }],
-			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'image',
