@@ -1,14 +1,14 @@
 // import { GoogleTagManager } from '@next/third-parties/google'
 import type { Metadata } from 'next'
-import SkipToContent from '@/ui/SkipToContent'
-import Announcement from '@/ui/Announcement'
-import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
 import NavMenu from '@/ui/navigation'
+import MainNavigationMenu from '@/ui/navigation/main-navigation-menu'
+import Menu from '@/ui/footer/Navigation'
+import Header from '@/ui/header'
 
 export const metadata: Metadata = {
 	icons: {
@@ -31,7 +31,7 @@ export default async function RootLayout({
 					// <Announcement />
 					// <Header />
 				}
-				<NavMenu />
+				<MainNavigationMenu />
 				<main id="main-content" tabIndex={-1}>
 					{children}
 				</main>

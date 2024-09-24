@@ -7,9 +7,10 @@ export default function CTA({
 	link,
 	style,
 	children,
+	className,
 	...rest
 }: Sanity.CTA & React.ComponentProps<'a'>) {
-	const _style = style as
+	const variant = style as
 		| 'link'
 		| 'ghost'
 		| 'default'
@@ -27,19 +28,28 @@ export default function CTA({
 
 	if (link?.type === 'internal' && link.internal)
 		return (
-			<Button asChild variant={_style}>
+			<Button asChild variant={variant} className="no-underline">
 				<Link
 					href={processUrl(link.internal, {
 						base: false,
 						params: link.params,
 					})}
+					className={`${className || ''} no-underline`.trim()}
+					style={{ textDecoration: 'none' }}
 					{...props}
 				/>
 			</Button>
 		)
 
 	if (link?.type === 'external' && link.external)
-		return <a href={stegaClean(link.external)} {...props} />
+		return (
+			<a
+				href={stegaClean(link.external)}
+				className={className}
+				{...props}
+				style={{ textDecoration: 'none' }}
+			/>
+		)
 
 	return props.children
 }
