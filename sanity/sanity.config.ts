@@ -14,6 +14,7 @@ import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
 import { schemaTypes } from './schemas'
+import { table } from '@sanity/table'
 
 const singletonTypes = ['site']
 
@@ -26,6 +27,7 @@ export default defineConfig({
 	basePath: '/admin',
 
 	plugins: [
+		table(),
 		structureTool({
 			name: 'content',
 			title: 'Content',
