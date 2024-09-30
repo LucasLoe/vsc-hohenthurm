@@ -33,6 +33,12 @@ export default defineType({
 				'One announcement shown at a time. Top items have higher precedence.',
 		}),
 		defineField({
+			name: 'tables',
+			type: 'array',
+			of: [{ type: 'leagueTable' }],
+			group: 'general',
+		}),
+		defineField({
 			name: 'ctas',
 			title: 'Call-to-action (Site-wide)',
 			description: 'Typically used in the header and/or footer.',

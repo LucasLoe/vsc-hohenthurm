@@ -40,6 +40,7 @@ export default defineType({
 				{ type: 'step-list' },
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
+				{ type: 'leagueTable' },
 			],
 			options: {
 				insertMenu: {
@@ -54,6 +55,7 @@ export default defineType({
 							name: 'testimonial',
 							of: ['testimonial-list', 'testimonial.featured'],
 						},
+						{ name: 'tables', of: ['leagueTable'] },
 					],
 				},
 			},

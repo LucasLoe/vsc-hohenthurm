@@ -38,6 +38,8 @@ import stepList from './modules/step-list'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 import fullscreenHero from './modules/fullscreen-hero'
+// tables
+import { LeagueTable } from './table/league-table'
 
 export const schemaTypes = [
 	// documents
@@ -80,4 +82,7 @@ export const schemaTypes = [
 	stepList,
 	testimonialFeatured,
 	testimonialList,
+
+	// tables
+	LeagueTable,
 ]
