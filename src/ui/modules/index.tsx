@@ -77,6 +77,7 @@ export default function Modules({
 					case 'testimonial.featured':
 						return <TestimonialFeatured {...module} key={module._key} />
 					case 'leagueTable':
+						//@ts-ignore
 						return <VSCGameTable {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />

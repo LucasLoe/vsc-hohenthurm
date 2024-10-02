@@ -8,12 +8,7 @@ import {
 	flexRender,
 } from '@tanstack/react-table'
 import { getColumns } from './tanstack-table-setup' // Import the getColumns function©
-import {
-	VSCPlacementElement,
-	VSCTElement,
-	VSCTHead,
-	VSCTRow,
-} from './table-components'
+import { VSCTElement, VSCTHead, VSCTRow } from './table-components'
 
 const VSCGameTable = (sanityTable: TableFromServer) => {
 	const { type: tabletype, data: tabledata } = transformToTanstack(sanityTable)
