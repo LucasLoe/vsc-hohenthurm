@@ -1,7 +1,9 @@
-import Image from 'next/image'
+'use client'
 import React from 'react'
 import { Roboto_Slab } from 'next/font/google'
 import Img, { Source } from '../Img'
+import { ArrowDownIcon } from '@radix-ui/react-icons'
+import { Button } from '@/components/ui/button'
 
 const robotoSlab = Roboto_Slab({ subsets: ['latin'] })
 
@@ -14,9 +16,16 @@ const FullscreenHero = ({
 	image: Sanity.Image
 	isFullScreen: boolean
 }>) => {
+	const scrollByScreenHeight = () => {
+		window.scrollTo({
+			top: window.innerHeight,
+			behavior: 'smooth',
+		})
+	}
+
 	return (
 		<div
-			className={`relative ${isFullScreen ? 'h-[calc(100vh-80px)]' : 'h-[calc(50vh-80px)]'} w-full`}
+			className={`relative ${isFullScreen ? 'h-[calc(100vh-80px)]' : 'h-[calc(50vh-80px)]'} w-full shadow-lg`}
 		>
 			<picture>
 				<Source image={image} imageWidth={1800} />
@@ -25,6 +34,7 @@ const FullscreenHero = ({
 					image={image}
 					imageWidth={1800}
 					draggable={false}
+					loading="eager"
 				/>
 			</picture>
 			<div className="z-2 to-vsc-pink-900/30 absolute inset-0 h-full w-full bg-gradient-to-b from-vsc-bg-dark to-vsc-blue/30" />
@@ -43,6 +53,14 @@ const FullscreenHero = ({
 						))
 					: null}
 			</div>
+			<Button
+				asChild
+				size="icon"
+				className="absolute bottom-8 left-1/2 size-12 -translate-x-1/2 transform cursor-pointer bg-vsc-bg-dark bg-opacity-50 shadow-xl hover:bg-vsc-bg-dark/80 focus:bg-vsc-bg-dark/80 active:bg-vsc-bg-dark/80"
+				onClick={scrollByScreenHeight}
+			>
+				<ArrowDownIcon className="hidden size-12 rounded-sm border-[1px] border-vsc-blue p-2 text-vsc-blue sm:block" />
+			</Button>
 		</div>
 	)
 }

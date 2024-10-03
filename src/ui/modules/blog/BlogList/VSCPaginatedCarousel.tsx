@@ -57,22 +57,20 @@ const VSCPaginatedCarousel = ({ posts }: VSCPaginatedCarouselProps) => {
 	}
 
 	return (
-		<section className="py-6 md:py-12">
+		<section className="w-full px-0 py-6 md:py-12">
 			<BlueGeometric>
 				<Carousel
 					setApi={setApi}
 					opts={{ align: 'start', loop: false }}
-					className="mx-auto w-full max-w-screen-xl"
+					className="mx-auto w-full"
 				>
-					<CarouselContent className="-ml-2 md:-ml-4">
+					<CarouselContent className="-ml-2 sm:-ml-4">
 						{posts.map((post, index) => (
 							<CarouselItem
 								key={index}
-								className="pl-2 sm:basis-1/2 md:pl-4 lg:basis-1/3"
+								className="pl-2 sm:basis-1/2 sm:pl-4 lg:basis-1/3"
 							>
-								<div className="p-1">
-									<VSCPostPreview post={post} />
-								</div>
+								<VSCPostPreview post={post} />
 							</CarouselItem>
 						))}
 					</CarouselContent>
