@@ -19,10 +19,8 @@ const NavMenu = () => {
 	const activeUrlPath = usePathname()
 	const mainSegment = `/${activeUrlPath.split('/')[1]}`
 
-	console.log(mainSegment)
-
 	return (
-		<NavigationMenu className="h-[80px] w-full max-w-full bg-vsc-bg-dark py-2">
+		<NavigationMenu className="h-[80px] w-full max-w-full py-2">
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<Link href="/" legacyBehavior passHref>

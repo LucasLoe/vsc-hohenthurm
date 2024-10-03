@@ -71,8 +71,8 @@ const ClientNavigationMenu: React.FC<ClientNavigationMenuProps> = ({
 							</SheetTrigger>
 						</div>
 						<SheetContent
-							aria-label="Mobile navigation menu"
-							side="left"
+							aria-label="mobile navigation menu"
+							side="right"
 							className="w-[60%] bg-vsc-bg-dark p-0"
 						>
 							<SheetHeader>

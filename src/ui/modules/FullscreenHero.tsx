@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { Fragment, useRef } from 'react'
 import { Roboto_Slab } from 'next/font/google'
 import Img, { Source } from '../Img'
 import { ArrowDownIcon } from '@radix-ui/react-icons'
@@ -52,15 +52,14 @@ const FullscreenHero = ({
 			<div className="absolute inset-0 flex flex-col items-center justify-center text-left">
 				{textLines
 					? textLines.map((line, i) => (
-							<>
+							<Fragment key={i}>
 								<p
-									key={i}
 									className={`${robotoSlab.className} text-left text-[3rem] font-extrabold leading-tight text-white drop-shadow-lg md:text-[4rem] lg:text-[6rem]`}
 								>
 									{line}
 								</p>
 								<br />
-							</>
+							</Fragment>
 						))
 					: null}
 			</div>
@@ -68,7 +67,7 @@ const FullscreenHero = ({
 				<Button
 					asChild
 					size="icon"
-					className="absolute bottom-32 left-1/2 size-12 -translate-x-1/2 transform cursor-pointer bg-vsc-bg-dark bg-opacity-50 shadow-xl hover:bg-vsc-bg-dark/80 focus:bg-vsc-bg-dark/80 active:bg-vsc-bg-dark/80 sm:bottom-8"
+					className="absolute bottom-32 left-1/2 size-12 -translate-x-1/2 transform cursor-pointer bg-transparent shadow-xl hover:bg-vsc-bg-dark/80 focus:bg-vsc-bg-dark/80 active:bg-vsc-bg-dark/80 sm:bottom-8"
 					onClick={scrollByScreenHeight}
 				>
 					<ArrowDownIcon className="size-12 rounded-sm border-[1px] border-vsc-blue p-2 text-vsc-blue sm:block" />
