@@ -1,22 +1,24 @@
 'use client'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { TableFromServer, transformToTanstack } from './table-transformers'
 import {
 	useReactTable,
 	getCoreRowModel,
 	flexRender,
 } from '@tanstack/react-table'
-import { getColumns } from './tanstack-table-setup' // Import the getColumns function©
+import { useColumns } from './tanstack-table-setup'
 import { VSCTElement, VSCTHead, VSCTRow } from './table-components'
 
 const VSCGameTable = (sanityTable: TableFromServer) => {
-	const { type: tabletype, data: tabledata } = transformToTanstack(sanityTable)
-	console.log('render')
-	const columns = getColumns(tabletype)
+	const { type: tableType, data: tableData } = useMemo(
+		() => transformToTanstack(sanityTable),
+		[sanityTable],
+	)
+	const columns = useColumns(tableType)
 
 	const table = useReactTable({
-		data: tabledata,
+		data: tableData,
 		columns,
 		getCoreRowModel: getCoreRowModel(),
 	})
@@ -39,15 +41,13 @@ const VSCGameTable = (sanityTable: TableFromServer) => {
 					))}
 				</thead>
 				<tbody className="sm:text-medium text-sm text-slate-200">
-					{table.getRowModel().rows.map((row, idr) => (
+					{table.getRowModel().rows.map((row) => (
 						<VSCTRow key={row.id}>
-							{row.getVisibleCells().map((cell) => {
-								return (
-									<VSCTElement key={cell.id} identifier={cell.id}>
-										{flexRender(cell.column.columnDef.cell, cell.getContext())}
-									</VSCTElement>
-								)
-							})}
+							{row.getVisibleCells().map((cell) => (
+								<VSCTElement key={cell.id} identifier={cell.id}>
+									{flexRender(cell.column.columnDef.cell, cell.getContext())}
+								</VSCTElement>
+							))}
 						</VSCTRow>
 					))}
 				</tbody>

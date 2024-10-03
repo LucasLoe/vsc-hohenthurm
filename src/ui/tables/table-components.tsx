@@ -29,7 +29,6 @@ export const VSCTElement = ({
 	children: ReactNode
 	identifier: string
 }) => {
-	console.log('identifier', identifier)
 	return identifier.split('_')[1] === 'placement' ? (
 		<td className="size-12 rounded-l-lg border border-none bg-vsc-bg-dark/90 outline-none first:rounded-l-lg last:rounded-r-lg">
 			<p className="w-full text-center font-mono text-xl text-vsc-blue sm:text-2xl">
