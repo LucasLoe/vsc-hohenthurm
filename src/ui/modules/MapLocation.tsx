@@ -9,7 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GeopointValue } from 'sanity'
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 import L from 'leaflet'
@@ -111,10 +111,17 @@ const MapLocation = ({
 	layout: 'card' | 'full-width'
 	googleMapsLink: string
 }) => {
+	const [isMounted, setIsMounted] = useState(false)
+
+	useEffect(() => {
+		/** nextjs will have window = undefined at initial render which leads to map render error */
+		setIsMounted(true)
+	}, [])
+
 	return (
 		<MapLayout title={title} description={description} layout={layout}>
 			<div className="flex flex-col gap-2">
-				<Map coordinates={coordinates} />
+				{isMounted ? <Map coordinates={coordinates} /> : null}
 				{googleMapsLink ? <GoogleMapsLink link={googleMapsLink} /> : null}
 			</div>
 		</MapLayout>
