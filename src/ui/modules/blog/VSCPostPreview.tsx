@@ -52,11 +52,11 @@ export default function VSCPostPreview({ post }: { post: Sanity.BlogPost }) {
 			className="group block space-y-2"
 			href={processUrl(post, { base: false })}
 		>
-			<Card className="flex h-[450px] flex-col justify-between rounded-sm border-0 shadow-lg">
+			<Card className="flex aspect-[4.2/3.5] max-w-96 flex-col justify-between rounded-sm border-0 shadow-lg">
 				<CardHeader className="p-4 shadow-inner">
-					<figure className="relative aspect-video overflow-hidden rounded-t-sm bg-ink/5">
+					<figure className="relative aspect-[1.3/1] overflow-hidden rounded-t-sm bg-ink/5">
 						<Img
-							className="w-full object-cover transition-[filter,transform] group-hover:scale-105 group-hover:brightness-110"
+							className="h-full w-full object-cover transition-[filter,transform] group-hover:scale-105 group-hover:brightness-110"
 							image={post.metadata.image}
 							imageWidth={800}
 							alt={post.metadata.title}
@@ -67,21 +67,21 @@ export default function VSCPostPreview({ post }: { post: Sanity.BlogPost }) {
 					<CardTitle className={cn('mb-2 text-xl', roboto.className)}>
 						{post.metadata.title}
 					</CardTitle>
-					<p>{post.metadata.description}</p>
+					<p className="line-clamp-2 truncate">{post.metadata.description}</p>
+				</CardContent>
+				<CardFooter className="flex place-items-center justify-between pb-4 pl-6 pr-4">
+					<p className="text-sm font-light text-gray-400">
+						<FormattedDate value={post.publishDate} />
+					</p>
 					<Button
-						variant="secondary"
+						variant="outline"
 						size="sm"
-						className="mx-auto mb-0 mt-auto flex place-items-center gap-1 px-2 shadow"
+						className="flex place-items-center gap-1 rounded-sm border-[1px] border-vsc-bg-dark px-2 text-vsc-bg-dark"
 					>
 						<ArrowRightIcon />
 						Weiterlesen
 					</Button>
-				</CardContent>
-				<CardFooter className="flex place-items-center justify-between pb-4">
-					<p className="text-sm font-light text-gray-400">
-						<FormattedDate value={post.publishDate} />
-					</p>
-					<Categories categories={post.categories} />
+					{false && <Categories categories={post.categories} />}
 				</CardFooter>
 			</Card>
 		</Link>
