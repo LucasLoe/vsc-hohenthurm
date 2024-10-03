@@ -37,7 +37,9 @@ import statList from './modules/stat-list'
 import stepList from './modules/step-list'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
+//custom
 import fullscreenHero from './modules/fullscreen-hero'
+import mapLocation from './modules/map-location'
 // tables
 import { LeagueTable } from './table/league-table'
 
@@ -82,7 +84,7 @@ export const schemaTypes = [
 	stepList,
 	testimonialFeatured,
 	testimonialList,
-
+	mapLocation,
 	// tables
 	LeagueTable,
 ]

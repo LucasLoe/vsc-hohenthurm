@@ -22,15 +22,19 @@ export default function HeroSplit({
 	}
 }>) {
 	return (
-		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
+		<section className="section grid max-w-4xl items-center gap-8 px-8 md:grid-cols-2 md:gap-x-12">
 			<figure
 				className={cn(
-					'max-md:full-bleed',
+					'',
 					image?.onRight && 'md:order-1',
 					image?.onBottom && 'max-md:order-last',
 				)}
 			>
-				<Img image={image} imageWidth={1200} />
+				<Img
+					className="mx-auto h-auto max-h-80 w-auto self-center rounded object-cover shadow"
+					image={image}
+					imageWidth={800}
+				/>
 			</figure>
 
 			<div className="richtext mx-auto w-full max-w-lg [&_:is(h1,h2)]:text-balance">
