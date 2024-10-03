@@ -41,6 +41,7 @@ export default defineType({
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
 				{ type: 'leagueTable' },
+				{ type: 'mapLocation' },
 			],
 			options: {
 				insertMenu: {
@@ -56,6 +57,7 @@ export default defineType({
 							of: ['testimonial-list', 'testimonial.featured'],
 						},
 						{ name: 'tables', of: ['leagueTable'] },
+						{ name: 'location', of: ['mapLocation'] },
 					],
 				},
 			},

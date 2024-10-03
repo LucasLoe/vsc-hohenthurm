@@ -18,6 +18,7 @@ import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
 import FullscreenHero from './FullscreenHero'
 import VSCGameTable from '../tables/vsc-game-table'
+import MapLocation from './MapLocation'
 
 export default function Modules({
 	modules,
@@ -64,6 +65,9 @@ export default function Modules({
 						return <HeroSaaS {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
+					case 'mapLocation':
+						// @ts-ignore
+						return <MapLocation {...module} key={module._key} />
 					case 'pricing-list':
 						return <PricingList {...module} key={module._key} />
 					case 'richtext-module':

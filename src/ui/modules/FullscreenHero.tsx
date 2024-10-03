@@ -20,7 +20,7 @@ const FullscreenHero = ({
 
 	const scrollByScreenHeight = () => {
 		if (heroRef.current && window) {
-			const yOffset = -20 // Small offset to ensure the element is just out of view
+			const yOffset = 0
 			const y =
 				heroRef.current.getBoundingClientRect().bottom +
 				window.scrollY +
