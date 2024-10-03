@@ -56,7 +56,7 @@ const FullscreenHero = ({
 			<Button
 				asChild
 				size="icon"
-				className="absolute bottom-8 left-1/2 size-12 -translate-x-1/2 transform cursor-pointer bg-vsc-bg-dark bg-opacity-50 shadow-xl hover:bg-vsc-bg-dark/80 focus:bg-vsc-bg-dark/80 active:bg-vsc-bg-dark/80"
+				className="absolute bottom-16 left-1/2 size-12 -translate-x-1/2 transform cursor-pointer bg-vsc-bg-dark bg-opacity-50 shadow-xl hover:bg-vsc-bg-dark/80 focus:bg-vsc-bg-dark/80 active:bg-vsc-bg-dark/80 sm:bottom-8"
 				onClick={scrollByScreenHeight}
 			>
 				<ArrowDownIcon className="size-12 rounded-sm border-[1px] border-vsc-blue p-2 text-vsc-blue sm:block" />
