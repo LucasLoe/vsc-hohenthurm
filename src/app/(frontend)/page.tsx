@@ -3,6 +3,9 @@ import { modulesQuery } from '@/lib/sanity/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
+// fu vercel cache
+export const fetchCache = 'force-no-store'
+
 export default async function Page() {
 	const page = await getPage()
 	return <Modules modules={page?.modules} />
