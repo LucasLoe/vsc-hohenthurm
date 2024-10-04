@@ -9,6 +9,10 @@ import {
 } from '@tanstack/react-table'
 import { useColumns } from './tanstack-table-setup'
 import { VSCTElement, VSCTHead, VSCTRow } from './table-components'
+import { TriangleRightIcon } from '@radix-ui/react-icons'
+import { Roboto_Slab } from 'next/font/google'
+
+const roboto = Roboto_Slab({ subsets: ['latin'] })
 
 const VSCGameTable = (sanityTable: TableFromServer) => {
 	const { data: tableData } = useMemo(
@@ -24,8 +28,14 @@ const VSCGameTable = (sanityTable: TableFromServer) => {
 	})
 
 	return (
-		<section className="flex items-center justify-center px-4 py-6 sm:py-12">
-			<table className="border-separate border-spacing-y-1">
+		<section className="flex flex-col place-items-center px-4 py-6 sm:py-12">
+			<h2
+				className={`mb-2 text-2xl font-bold text-vsc-bg-dark sm:mb-12 ${roboto.className} flex w-fit items-center`}
+			>
+				<TriangleRightIcon className="size-12 text-vsc-pink" />
+				{sanityTable.tableTitle}
+			</h2>
+			<table className="border-separate border-spacing-y-2">
 				<thead className="text-sm sm:text-lg">
 					{table.getHeaderGroups().map((headerGroup) => (
 						<tr key={headerGroup.id}>
@@ -40,7 +50,7 @@ const VSCGameTable = (sanityTable: TableFromServer) => {
 						</tr>
 					))}
 				</thead>
-				<tbody className="sm:text-medium text-sm text-slate-200">
+				<tbody className="sm:text-medium text-sm text-black">
 					{table.getRowModel().rows.map((row) => (
 						<VSCTRow key={row.id}>
 							{row.getVisibleCells().map((cell) => (
