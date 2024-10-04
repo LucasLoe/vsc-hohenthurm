@@ -19,6 +19,7 @@ import TestimonialFeatured from './TestimonialFeatured'
 import FullscreenHero from './FullscreenHero'
 import VSCGameTable from '../tables/vsc-game-table'
 import MapLocation from './MapLocation'
+import VSCMatchSchedule from '../tables/vsc-match-schedule'
 
 export default function Modules({
 	modules,
@@ -83,6 +84,9 @@ export default function Modules({
 					case 'leagueTable':
 						//@ts-ignore
 						return <VSCGameTable {...module} key={module._key} />
+					case 'matchSchedule':
+						//@ts-ignore
+						return <VSCMatchSchedule {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />
 				}

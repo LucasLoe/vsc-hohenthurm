@@ -11,11 +11,11 @@ import { useColumns } from './tanstack-table-setup'
 import { VSCTElement, VSCTHead, VSCTRow } from './table-components'
 
 const VSCGameTable = (sanityTable: TableFromServer) => {
-	const { type: tableType, data: tableData } = useMemo(
+	const { data: tableData } = useMemo(
 		() => transformToTanstack(sanityTable),
 		[sanityTable],
 	)
-	const columns = useColumns(tableType)
+	const columns = useColumns()
 
 	const table = useReactTable({
 		data: tableData,
@@ -24,7 +24,7 @@ const VSCGameTable = (sanityTable: TableFromServer) => {
 	})
 
 	return (
-		<div className="flex items-center justify-center px-4 py-12">
+		<section className="flex items-center justify-center px-4 py-6 sm:py-12">
 			<table className="border-separate border-spacing-y-1">
 				<thead className="text-sm sm:text-lg">
 					{table.getHeaderGroups().map((headerGroup) => (
@@ -52,7 +52,7 @@ const VSCGameTable = (sanityTable: TableFromServer) => {
 					))}
 				</tbody>
 			</table>
-		</div>
+		</section>
 	)
 }
 

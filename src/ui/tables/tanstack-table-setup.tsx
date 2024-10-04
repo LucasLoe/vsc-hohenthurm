@@ -55,45 +55,8 @@ const createPunktetabelleColumns = (): ColumnDef<
 	}),
 ]
 
-const createSpielplanColumns = (): ColumnDef<
-	TransformedTable['data'][number],
-	any
->[] => [
-	columnHelper.accessor('datum', {
-		header: 'Datum',
-		cell: (info) => info.getValue(),
-	}),
-	columnHelper.accessor('uhrzeit', {
-		header: 'Uhrzeit',
-		cell: (info) => info.getValue(),
-	}),
-	columnHelper.accessor('heim', {
-		header: 'Heim',
-		cell: (info) => info.getValue(),
-	}),
-	columnHelper.accessor('gast', {
-		header: 'Gast',
-		cell: (info) => info.getValue(),
-	}),
-	columnHelper.accessor('ort', {
-		header: 'Ort',
-		cell: (info) => info.getValue(),
-	}),
-	columnHelper.accessor('ergebnis', {
-		header: 'Ergebnis',
-		cell: (info) => info.getValue(),
-	}),
-]
-
-export function useColumns(tableType: TransformedTable['type']) {
+export function useColumns() {
 	return useMemo(() => {
-		switch (tableType) {
-			case 'Punktetabelle':
-				return createPunktetabelleColumns()
-			case 'Spielplan':
-				return createSpielplanColumns()
-			default:
-				throw new Error(`Unexpected table type: ${tableType}`)
-		}
-	}, [tableType])
+		return createPunktetabelleColumns()
+	}, [])
 }
