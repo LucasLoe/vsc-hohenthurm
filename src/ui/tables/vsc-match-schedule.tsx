@@ -35,9 +35,9 @@ const germanMonthAbbreviations: string[] = [
 const VSCMatchSchedule = (props: MatchSchedule) => {
 	const { title, matches } = props
 	return (
-		<section className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-12">
+		<section className="mx-auto flex w-full max-w-6xl flex-col place-items-center px-4 py-8 sm:px-12">
 			<h2
-				className={`mb-6 text-2xl font-bold text-vsc-bg-dark sm:mb-12 ${roboto.className} flex w-fit items-center`}
+				className={`mb-6 ml-0 mr-auto text-2xl font-bold text-vsc-bg-dark sm:mb-12 ${roboto.className} flex w-fit items-center`}
 			>
 				<TriangleRightIcon className="size-12 text-vsc-pink" />
 				{title}
