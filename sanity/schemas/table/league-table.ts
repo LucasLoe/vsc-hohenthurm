@@ -29,28 +29,6 @@ export const LeagueTable = defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
-			name: 'tableType',
-			type: 'string',
-			title: 'Table Type',
-			options: {
-				list: Object.keys(tableTypes),
-			},
-			validation: (Rule) => Rule.required(),
-		}),
-		defineField({
-			name: 'helpSpielplan',
-			type: 'string',
-			title: 'Die Spalten müssen wie folgt befüllt werden:',
-			description: `${tableTypes['Spielplan'].join(', ')}`,
-			readOnly: true,
-			components: {
-				input: () => null,
-			},
-			hidden: ({ parent }: { parent?: Partial<LeagueTableDocument> }) => {
-				return parent?.tableType !== 'Spielplan'
-			},
-		}),
-		defineField({
 			name: 'helpPunktetabelle',
 			type: 'string',
 			title: 'Die Spalten müssen wie folgt befüllt werden:',
@@ -58,9 +36,6 @@ export const LeagueTable = defineType({
 			readOnly: true,
 			components: {
 				input: () => null,
-			},
-			hidden: ({ parent }: { parent?: Partial<LeagueTableDocument> }) => {
-				return parent?.tableType !== 'Punktetabelle'
 			},
 		}),
 		defineField({

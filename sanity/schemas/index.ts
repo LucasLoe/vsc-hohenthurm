@@ -42,6 +42,7 @@ import fullscreenHero from './modules/fullscreen-hero'
 import mapLocation from './modules/map-location'
 // tables
 import { LeagueTable } from './table/league-table'
+import { matchSchedule } from './table/match-schedule'
 
 export const schemaTypes = [
 	// documents
@@ -87,4 +88,5 @@ export const schemaTypes = [
 	mapLocation,
 	// tables
 	LeagueTable,
+	matchSchedule,
 ]
