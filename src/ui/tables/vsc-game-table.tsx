@@ -28,9 +28,9 @@ const VSCGameTable = (sanityTable: TableFromServer) => {
 	})
 
 	return (
-		<section className="flex flex-col place-items-center px-4 py-6 sm:py-12">
+		<section className="mx-auto flex w-full max-w-6xl flex-col place-items-center px-4 py-6 sm:px-12 sm:py-12">
 			<h2
-				className={`mb-2 text-2xl font-bold text-vsc-bg-dark sm:mb-12 ${roboto.className} flex w-fit items-center`}
+				className={`text-2xl font-bold text-vsc-bg-dark sm:mb-12 ${roboto.className} ml-0 mr-auto flex w-fit items-center`}
 			>
 				<TriangleRightIcon className="size-12 text-vsc-pink" />
 				{sanityTable.tableTitle}

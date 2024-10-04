@@ -10,7 +10,11 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { HomeIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
+import {
+	HomeIcon,
+	HamburgerMenuIcon,
+	TriangleRightIcon,
+} from '@radix-ui/react-icons'
 import { usePathname } from 'next/navigation'
 import {
 	Sheet,
@@ -148,11 +152,12 @@ const MobileNavigationEntry: React.FC<{
 		<Link
 			href={href}
 			className={cn(
-				'w-full rounded p-2 text-lg text-vsc-bg-light hover:bg-vsc-blue hover:text-vsc-bg-dark',
+				'flex w-full items-center rounded p-2 text-lg text-vsc-bg-light hover:bg-vsc-blue hover:text-vsc-bg-dark',
 				isActive && 'text-vsc-pink hover:text-vsc-bg-dark',
 			)}
 			onClick={closeMenu}
 		>
+			{isActive && <TriangleRightIcon className="size-8 text-vsc-pink" />}
 			{title}
 		</Link>
 	)
