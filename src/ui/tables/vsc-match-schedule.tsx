@@ -42,7 +42,7 @@ const VSCMatchSchedule = (props: MatchSchedule) => {
 				<TriangleRightIcon className="size-12 text-vsc-pink" />
 				{title}
 			</h2>
-			<div className="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-2">
+			<div className="grid w-full grid-cols-1 gap-x-12 gap-y-6 pr-1 md:grid-cols-2">
 				{matches
 					? matches.map((match, index) => <MatchEntry key={index} {...match} />)
 					: null}
@@ -53,7 +53,7 @@ const VSCMatchSchedule = (props: MatchSchedule) => {
 
 const MatchEntry = (props: MatchSchedule['matches'][0]) => {
 	return (
-		<div className="flex w-full">
+		<div className="flex w-full grow">
 			<DateField date={props.date} />
 			<InfoField matches={props} />
 		</div>
