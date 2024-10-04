@@ -1,7 +1,7 @@
 import React from 'react'
 import { Roboto_Slab } from 'next/font/google'
-import { sub } from 'date-fns'
 import { TriangleRightIcon } from '@radix-ui/react-icons'
+import { LuMapPin } from 'react-icons/lu'
 
 const roboto = Roboto_Slab({ subsets: ['latin'] })
 
@@ -34,13 +34,12 @@ const germanMonthAbbreviations: string[] = [
 
 const VSCMatchSchedule = (props: MatchSchedule) => {
 	const { title, matches } = props
-	console.log(title, matches)
 	return (
-		<section className="mx-auto w-full max-w-6xl px-4 py-8 md:px-12">
+		<section className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-12">
 			<h2
-				className={`mb-6 text-2xl font-bold text-vsc-blue sm:mb-12 ${roboto.className} flex w-fit items-center`}
+				className={`mb-6 text-2xl font-bold text-vsc-bg-dark sm:mb-12 ${roboto.className} flex w-fit items-center`}
 			>
-				<TriangleRightIcon className="size-12" />
+				<TriangleRightIcon className="size-12 text-vsc-pink" />
 				{title}
 			</h2>
 			<div className="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-2">
@@ -77,14 +76,14 @@ const DateField = (props: { date: string }) => {
 
 const InfoField = (props: { matches: MatchSchedule['matches'][0] }) => {
 	return (
-		<div className="relative z-0 -ml-4 mt-2 h-20 grow rounded bg-vsc-bg-dark/80 py-2 pl-8 shadow-lg">
-			<p className="sm:text-md mb-1 truncate pr-2 text-sm font-medium text-vsc-bg-light xl:text-lg">
+		<div className="relative z-0 -ml-4 mt-2 h-20 grow rounded bg-vsc-bg-dark/10 py-2 pl-8 shadow">
+			<p className="sm:text-md truncate pr-2 text-sm font-medium text-vsc-bg-dark xl:text-lg">
 				{props.matches.homeTeam} vs. {props.matches.guestTeam}
 			</p>
-			<p className="truncate pr-2 text-sm font-light text-gray-400">
-				{props.matches.location}
+			<p className="flex items-center gap-1 truncate pr-2 text-sm font-light text-gray-500">
+				<LuMapPin size={12} /> {props.matches.location}
 			</p>
-			<p className="truncate pr-2 text-sm font-light text-gray-400">
+			<p className="flex items-center gap-1 truncate pr-2 text-sm font-light text-gray-500">
 				{props.matches.time}
 			</p>
 			{props.matches.result ? (

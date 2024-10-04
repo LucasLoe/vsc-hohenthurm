@@ -1,26 +1,28 @@
 import { cn } from '@/lib/utils'
 import { ReactNode } from 'react'
+import { Roboto_Slab } from 'next/font/google'
 
+const roboto = Roboto_Slab({ subsets: ['latin'] })
 export const VSCTRow = ({ children }: { children: ReactNode }) => {
-	return <tr className="mb-4 h-12 rounded-full shadow-xl">{children}</tr>
+	return (
+		<tr className="mb-4 h-12 rounded-lg bg-vsc-bg-dark/10 shadow">
+			{children}
+		</tr>
+	)
 }
 
 export const VSCTHead = ({ children }: { children: ReactNode }) => {
 	return (
 		<th
 			className={cn(
-				'bg-vsc-blue px-4 py-4 text-left font-medium text-black first:rounded-l-md last:rounded-r-md',
-				'',
+				'bg-vsc-blue py-4 pl-2 pr-4 text-left font-medium text-black first:rounded-l-md last:rounded-r-md',
+				roboto.className,
 			)}
 		>
 			{children}
 		</th>
 	)
 }
-
-export const VSCTRowExpanded = ({ children }: { children: ReactNode }) => {}
-
-export const VSCTLayout = ({ children }: { children: ReactNode }) => {}
 
 export const VSCTElement = ({
 	children,
@@ -30,21 +32,15 @@ export const VSCTElement = ({
 	identifier: string
 }) => {
 	return identifier.split('_')[1] === 'placement' ? (
-		<td className="size-12 rounded-l-lg border border-none bg-vsc-bg-dark/90 outline-none first:rounded-l-lg last:rounded-r-lg">
-			<p className="w-full text-center font-mono text-xl text-vsc-blue sm:text-2xl">
+		<td className="size-12 rounded-l-lg border border-none bg-vsc-bg-dark/90 shadow outline-none">
+			<p
+				className={`w-full rounded text-center text-xl font-semibold text-vsc-pink sm:text-2xl ${roboto.className}`}
+			>
 				{children}
 			</p>
 		</td>
 	) : (
-		<td className="bg-vsc-bg-dark px-2 py-1 first:rounded-l-lg last:rounded-r-lg sm:px-4">
-			{children}
-		</td>
-	)
-}
-
-export const VSCPlacementElement = ({ children }: { children: ReactNode }) => {
-	return (
-		<td className="flex size-12 place-items-center rounded-2xl bg-vsc-pink font-mono text-xl font-black">
+		<td className="bg-transparent px-2 py-1 last:rounded-r-lg sm:px-4">
 			{children}
 		</td>
 	)
