@@ -27,37 +27,39 @@ export async function generateStaticParams() {
 }
 
 async function getPost(params: Props['params']) {
-	return await fetchSanity<Sanity.BlogPost>(
+	const post = await fetchSanity<Sanity.BlogPost>(
 		groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
-			...,
-			'body': select(_type == 'image' => asset->, body),
-			'readTime': length(pt::text(body)) / 200,
-			'headings': body[style in ['h2', 'h3']]{
-				style,
-				'text': pt::text(@)
-			},
-			categories[]->,
-			metadata {
-				...,
-				'ogimage': image.asset->url + '?w=1200'
-			}
-		}`,
+      ...,
+      'body': select(_type == 'image' => asset->, body),
+      'readTime': length(pt::text(body)) / 200,
+      'headings': body[style in ['h2', 'h3']]{
+        style,
+        'text': pt::text(@)
+      },
+      categories[]->,
+      metadata {
+        ...,
+        'ogimage': image.asset->url + '?w=1200'
+      }
+    }`,
 		{
 			params,
 			tags: ['blog.post'],
 		},
 	)
+	return post
 }
 
 async function getPageTemplate() {
-	return await fetchSanity<Sanity.Page>(
+	const page = await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
-			...,
-			modules[]{ ${modulesQuery} },
-			metadata { slug }
-		}`,
+      ...,
+      modules[]{ ${modulesQuery} },
+      metadata { slug }
+    }`,
 		{ tags: ['blog/*'] },
 	)
+	return page
 }
 
 type Props = {
