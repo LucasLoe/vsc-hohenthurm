@@ -24,4 +24,18 @@ export default defineType({
 			},
 		},
 	],
+	preview: {
+		select: {
+			value: 'value',
+			responsive: 'responsive',
+		},
+		prepare(selection) {
+			const { value, responsive } = selection
+			const responsiveText = responsive ? 'Responsive' : 'Fixed'
+			return {
+				title: `Spacing: ${value.toUpperCase()}`,
+				subtitle: `${responsiveText} spacing`,
+			}
+		},
+	},
 })

@@ -27,4 +27,18 @@ export default defineType({
 			},
 		},
 	],
+	preview: {
+		select: {
+			title: 'title',
+			color: 'color',
+			type: 'type',
+		},
+		prepare(selection) {
+			const { title, color, type } = selection
+			return {
+				title: title || 'Untitled Heading',
+				subtitle: `${type.toUpperCase()} - ${color.charAt(0).toUpperCase() + color.slice(1)}`,
+			}
+		},
+	},
 })

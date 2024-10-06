@@ -37,6 +37,7 @@ export default defineType({
 				{ type: 'hero' },
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },
+				{ type: 'imageGallery' },
 				{ type: 'logo-list' },
 				{ type: 'leagueTable' },
 				{ type: 'mapLocation' },

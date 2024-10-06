@@ -43,12 +43,18 @@ export default function CTA({
 
 	if (link?.type === 'external' && link.external)
 		return (
-			<a
-				href={stegaClean(link.external)}
-				className={className}
-				{...props}
-				style={{ textDecoration: 'none' }}
-			/>
+			<Button
+				asChild
+				variant={'outline'}
+				className="border-[1px] py-1 font-normal no-underline shadow-inner"
+			>
+				<Link
+					href={stegaClean(link.external)}
+					className={className}
+					{...props}
+					style={{ textDecoration: 'none' }}
+				/>
+			</Button>
 		)
 
 	return props.children
