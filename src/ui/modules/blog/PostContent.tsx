@@ -1,17 +1,15 @@
 import uid from '@/lib/uid'
-import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import Content from '@/ui/modules/RichtextModule/Content'
 import { cn } from '@/lib/utils'
 import css from './PostContent.module.css'
 import { Categories, DateBadge } from './vsc-post-content-components'
+import ImageGallery from '../ImageGallery'
 
 export default function PostContent({
 	post,
 	...props
 }: { post?: Sanity.BlogPost } & Sanity.Module) {
 	if (!post) return null
-
-	const showTOC = !post.hideTableOfContents || !!post.headings?.length
 
 	return (
 		<article id={uid(props)}>
@@ -23,12 +21,14 @@ export default function PostContent({
 				</div>
 			</header>
 
-			<div className={cn('section grid max-w-4xl gap-8')}>
+			<section className="mx-auto max-w-5xl px-4 py-4 sm:px-12 sm:py-6">
 				<Content
 					value={post.body}
 					className={cn(css.body, 'grid max-w-screen-md')}
 				></Content>
-			</div>
+			</section>
+
+			{post.gallery ? <ImageGallery images={post.gallery.images} /> : null}
 		</article>
 	)
 }
