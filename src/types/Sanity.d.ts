@@ -50,6 +50,7 @@ declare global {
 			featured: boolean
 			hideTableOfContents: boolean
 			publishDate: string
+			gallery?: { images: Image[] }
 		}
 
 		type BlogCategory = SanityDocument<{

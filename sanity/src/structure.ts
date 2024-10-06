@@ -16,16 +16,16 @@ const structure: StructureResolver = (S, context) =>
 			S.documentTypeListItem('blog.category').title('Blog categories'),
 			S.divider(),
 
-			S.documentTypeListItem('announcement').title('Announcements'),
+			// S.documentTypeListItem('announcement').title('Announcements'),
 			S.documentTypeListItem('navigation'),
-			S.documentTypeListItem('redirect').title('Redirects'),
+			// S.documentTypeListItem('redirect').title('Redirects'),
 			S.divider(),
 
 			group(S, 'Miscellaneous', [
 				S.documentTypeListItem('logo').title('Logos'),
-				S.documentTypeListItem('pricing').title('Pricing tiers'),
-				S.documentTypeListItem('reputation'),
-				S.documentTypeListItem('testimonial').title('Testimonials'),
+				// S.documentTypeListItem('pricing').title('Pricing tiers'),
+				// S.documentTypeListItem('reputation'),
+				// S.documentTypeListItem('testimonial').title('Testimonials'),
 			]).icon(BsDatabaseAdd),
 		])
 

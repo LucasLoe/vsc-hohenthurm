@@ -1,6 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
 import imageBlock from '../fragments/image-block'
+import imageGallery from '../modules/image-gallery'
 
 export default defineType({
 	name: 'blog.post',
@@ -38,6 +39,11 @@ export default defineType({
 					to: [{ type: 'blog.category' }],
 				},
 			],
+			group: 'content',
+		}),
+		defineField({
+			name: 'gallery',
+			type: 'imageGallery',
 			group: 'content',
 		}),
 		defineField({

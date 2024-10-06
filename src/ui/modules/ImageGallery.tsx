@@ -35,7 +35,7 @@ const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
 	const [selectedImage, setSelectedImage] = useState<Sanity.Image | null>(null)
 
 	return (
-		<section className="mx-auto max-w-5xl px-4 sm:px-12">
+		<section className="mx-auto max-w-5xl px-4 py-4 sm:px-12 sm:py-6">
 			<div className="grid auto-cols-max grid-flow-col sm:gap-2">
 				{images
 					? images.map((image, idx) => (
