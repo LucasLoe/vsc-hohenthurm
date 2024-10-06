@@ -22,7 +22,7 @@ export default function HeroSplit({
 	}
 }>) {
 	return (
-		<section className="section grid max-w-5xl items-center justify-between gap-8 px-8 py-8 md:grid-cols-2 md:gap-x-12">
+		<section className="section grid max-w-5xl items-center justify-between gap-6 px-8 py-8 md:grid-cols-2 md:gap-x-12">
 			<figure
 				className={cn(
 					'',
@@ -41,7 +41,7 @@ export default function HeroSplit({
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText value={content} />
 				<Reputation className="!mt-4" reputation={reputation} />
-				<CTAList ctas={ctas} className="!mt-4" />
+				<CTAList ctas={ctas} className="!mt-2" />
 			</div>
 		</section>
 	)
