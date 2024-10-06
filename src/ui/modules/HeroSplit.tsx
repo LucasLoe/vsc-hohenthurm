@@ -22,7 +22,7 @@ export default function HeroSplit({
 	}
 }>) {
 	return (
-		<section className="section grid max-w-4xl items-center gap-8 px-8 md:grid-cols-2 md:gap-x-12">
+		<section className="section grid max-w-5xl items-center justify-between gap-8 px-8 py-8 md:grid-cols-2 md:gap-x-12">
 			<figure
 				className={cn(
 					'',
@@ -31,7 +31,7 @@ export default function HeroSplit({
 				)}
 			>
 				<Img
-					className="mx-auto h-auto max-h-80 w-auto self-center rounded object-cover shadow"
+					className="mx-auto h-auto w-full max-w-80 rounded object-cover"
 					image={image}
 					imageWidth={800}
 				/>

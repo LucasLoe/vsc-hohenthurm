@@ -1,3 +1,4 @@
+// MODULE-WORKFLOW --> SCHEMAS
 // documents
 import site from './documents/site'
 import page from './documents/page'
@@ -40,9 +41,13 @@ import testimonialList from './modules/testimonial-list'
 //custom
 import fullscreenHero from './modules/fullscreen-hero'
 import mapLocation from './modules/map-location'
+import vscBoardMembers from './modules/vsc-board-members'
 // tables
 import { LeagueTable } from './table/league-table'
 import { matchSchedule } from './table/match-schedule'
+import heading from './atoms/heading'
+import spacing from './atoms/spacing'
+import imageGallery from './modules/image-gallery'
 
 export const schemaTypes = [
 	// documents
@@ -74,7 +79,6 @@ export const schemaTypes = [
 	creativeModule,
 	customHtml,
 	flagList,
-	fullscreenHero,
 	hero,
 	heroSaas,
 	HeroSplit,
@@ -85,8 +89,18 @@ export const schemaTypes = [
 	stepList,
 	testimonialFeatured,
 	testimonialList,
+
+	//custom
+	fullscreenHero,
 	mapLocation,
+	vscBoardMembers,
+	imageGallery,
+
 	// tables
 	LeagueTable,
 	matchSchedule,
+
+	// atoms
+	heading,
+	spacing,
 ]
