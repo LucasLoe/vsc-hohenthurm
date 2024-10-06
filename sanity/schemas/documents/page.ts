@@ -1,6 +1,8 @@
 import { defineField, defineType } from 'sanity'
 import { VscHome, VscEyeClosed, VscQuestion, VscEdit } from 'react-icons/vsc'
 
+// MODULE-WORKFLOW: --> CONNECTION
+
 export default defineType({
 	name: 'page',
 	title: 'Page',
@@ -21,6 +23,7 @@ export default defineType({
 			description: 'Page content',
 			type: 'array',
 			of: [
+				// MODULE-WORKFLOW: add here
 				{ type: 'accordion-list' },
 				{ type: 'blog-list' },
 				{ type: 'blog-post-content' },
@@ -30,22 +33,26 @@ export default defineType({
 				{ type: 'custom-html' },
 				{ type: 'flag-list' },
 				{ type: 'fullscreen-hero' },
+				{ type: 'heading' },
 				{ type: 'hero' },
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },
 				{ type: 'logo-list' },
+				{ type: 'leagueTable' },
+				{ type: 'mapLocation' },
+				{ type: 'matchSchedule' },
 				{ type: 'pricing-list' },
 				{ type: 'richtext-module' },
+				{ type: 'spacing' },
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
-				{ type: 'leagueTable' },
-				{ type: 'mapLocation' },
-				{ type: 'matchSchedule' },
+				{ type: 'vsc-boardmembers' },
 			],
 			options: {
 				insertMenu: {
+					// MODULE-WORKFLOW: add here
 					views: [{ name: 'list' }, { name: 'grid' }],
 					groups: [
 						{ name: 'blog', of: ['blog-list', 'blog-post-content'] },
@@ -57,8 +64,12 @@ export default defineType({
 							name: 'testimonial',
 							of: ['testimonial-list', 'testimonial.featured'],
 						},
+						{ name: 'atoms', of: ['heading', 'spacing'] },
 						{ name: 'tables', of: ['leagueTable', 'matchSchedule'] },
-						{ name: 'location', of: ['mapLocation'] },
+						{
+							name: 'others',
+							of: ['mapLocation', 'vsc-boardmembers', 'imageGallery'],
+						},
 					],
 				},
 			},

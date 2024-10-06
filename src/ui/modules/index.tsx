@@ -1,3 +1,4 @@
+// MODULE-WORKFLOW --> UI CONNECTION
 import AccordionList from './AccordionList'
 import BlogList from './blog/BlogList'
 import Breadcrumbs from './Breadcrumbs'
@@ -20,6 +21,10 @@ import FullscreenHero from './FullscreenHero'
 import VSCGameTable from '../tables/vsc-game-table'
 import MapLocation from './MapLocation'
 import VSCMatchSchedule from '../tables/vsc-match-schedule'
+import VSCBoardMembers from './VSCBoardMembers'
+import Heading from '../atoms/heading'
+import Spacing from '../atoms/spacing'
+import ImageGallery from './ImageGallery'
 
 export default function Modules({
 	modules,
@@ -87,6 +92,18 @@ export default function Modules({
 					case 'matchSchedule':
 						//@ts-ignore
 						return <VSCMatchSchedule {...module} key={module._key} />
+					case 'vsc-boardmembers':
+						//@ts-ignore
+						return <VSCBoardMembers {...module} key={module._key} />
+					case 'imageGallery':
+						//@ts-ignore
+						return <ImageGallery {...module} key={module._key} />
+					case 'heading':
+						//@ts-ignore
+						return <Heading {...module} key={module._key} />
+					case 'spacing':
+						//@ts-ignore
+						return <Spacing {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />
 				}

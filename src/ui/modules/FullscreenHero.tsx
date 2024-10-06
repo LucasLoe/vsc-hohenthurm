@@ -54,7 +54,7 @@ const FullscreenHero = ({
 					? textLines.map((line, i) => (
 							<Fragment key={i}>
 								<p
-									className={`${robotoSlab.className} text-left text-[3rem] font-extrabold leading-tight text-white drop-shadow-lg md:text-[4rem] lg:text-[6rem]`}
+									className={`${robotoSlab.className} text-left text-4xl font-extrabold leading-tight text-white drop-shadow-lg sm:text-[4rem] md:text-[6rem]`}
 								>
 									{line}
 								</p>
