@@ -50,6 +50,7 @@ export default defineType({
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
 				{ type: 'vsc-boardmembers' },
+				{ type: 'timeline' },
 			],
 			options: {
 				insertMenu: {
@@ -69,7 +70,12 @@ export default defineType({
 						{ name: 'tables', of: ['leagueTable', 'matchSchedule'] },
 						{
 							name: 'others',
-							of: ['mapLocation', 'vsc-boardmembers', 'imageGallery'],
+							of: [
+								'mapLocation',
+								'vsc-boardmembers',
+								'imageGallery',
+								'timeline',
+							],
 						},
 					],
 				},
