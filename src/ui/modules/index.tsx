@@ -25,6 +25,7 @@ import VSCBoardMembers from './VSCBoardMembers'
 import Heading from '../atoms/heading'
 import Spacing from '../atoms/spacing'
 import ImageGallery from './ImageGallery'
+import Timeline from './Timeline'
 
 export default function Modules({
 	modules,
@@ -104,6 +105,9 @@ export default function Modules({
 					case 'spacing':
 						//@ts-ignore
 						return <Spacing {...module} key={module._key} />
+					case 'timeline':
+						//@ts-ignore
+						return <Timeline {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />
 				}

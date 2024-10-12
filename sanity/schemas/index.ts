@@ -42,6 +42,7 @@ import testimonialList from './modules/testimonial-list'
 import fullscreenHero from './modules/fullscreen-hero'
 import mapLocation from './modules/map-location'
 import vscBoardMembers from './modules/vsc-board-members'
+import timeline from './modules/timeline'
 // tables
 import { LeagueTable } from './table/league-table'
 import { matchSchedule } from './table/match-schedule'
@@ -95,6 +96,7 @@ export const schemaTypes = [
 	mapLocation,
 	vscBoardMembers,
 	imageGallery,
+	timeline,
 
 	// tables
 	LeagueTable,
