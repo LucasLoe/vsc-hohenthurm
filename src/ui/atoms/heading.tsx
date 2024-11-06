@@ -11,7 +11,7 @@ type HeadingProps = {
 }
 
 const headingStyles = {
-	h2: 'text-2xl my-2 sm:my-4',
+	h2: 'text-3xl my-2 sm:my-4',
 	h3: 'text-xl my-2 sm:my-4',
 	h4: 'text-lg my-2 sm:my-4',
 }
