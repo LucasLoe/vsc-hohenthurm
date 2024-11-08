@@ -15,7 +15,7 @@ const backgroundColors = {
 
 const BlueGeometric = ({ children }: { children: ReactNode }) => {
 	return (
-		<div className="relative w-full">
+		<div className="relative">
 			<svg
 				className="h-16 w-full"
 				viewBox="0 0 100 50"
