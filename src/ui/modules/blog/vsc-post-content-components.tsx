@@ -25,7 +25,7 @@ export const Categories = ({
 export const DateBadge = ({ value }: { value: string }) => {
 	return (
 		<time dateTime={value} className="text-vsc-bg-dark/50">
-			{new Date(value).toLocaleDateString(undefined, {
+			{new Date(value).toLocaleDateString('de', {
 				year: 'numeric',
 				month: 'long',
 				day: 'numeric',
