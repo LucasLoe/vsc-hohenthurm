@@ -67,7 +67,7 @@ export default function VSCPostPreview({ post }: { post: Sanity.BlogPost }) {
 					<CardTitle className={cn('mb-2 text-xl', roboto.className)}>
 						{post.metadata.title}
 					</CardTitle>
-					<p className="line-clamp-2 truncate">{post.metadata.description}</p>
+					<p className="line-clamp-2">{post.metadata.description}</p>
 				</CardContent>
 				<CardFooter className="flex place-items-center justify-between pb-4 pl-6 pr-4">
 					<p className="text-sm font-light text-gray-400">
