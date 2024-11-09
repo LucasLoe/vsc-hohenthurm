@@ -9,6 +9,7 @@ import {
 	DialogTrigger,
 } from '@/components/ui/dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const PreviewImage = ({
 	image,
@@ -19,7 +20,7 @@ const PreviewImage = ({
 }) => {
 	return (
 		<div
-			className="mx-auto aspect-square w-24 cursor-pointer self-center bg-white p-0.5 shadow sm:w-36"
+			className="mx-auto aspect-square w-full cursor-pointer self-center bg-white p-0.5 shadow"
 			onClick={onClick}
 		>
 			<Img
@@ -32,14 +33,36 @@ const PreviewImage = ({
 }
 
 const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
-	const [selectedImage, setSelectedImage] = useState<Sanity.Image | null>(null)
+	const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+		null,
+	)
+	const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+	const handlePrevious = () => {
+		setSelectedImageIndex((prev) =>
+			prev !== null ? (prev - 1 + images.length) % images.length : null,
+		)
+	}
+
+	const handleNext = () => {
+		setSelectedImageIndex((prev) =>
+			prev !== null ? (prev + 1) % images.length : null,
+		)
+	}
 
 	return (
-		<section className="mx-auto max-w-5xl px-4 py-4 sm:px-12 sm:py-6">
-			<div className="grid auto-cols-max grid-flow-col sm:gap-2">
+		<section className="mx-auto max-w-4xl px-4 py-4 sm:px-12 sm:py-6">
+			<div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5">
 				{images
 					? images.map((image, idx) => (
-							<Dialog key={idx}>
+							<Dialog
+								key={idx}
+								open={isDialogOpen && selectedImageIndex === idx}
+								onOpenChange={(open) => {
+									setIsDialogOpen(open)
+									if (!open) setSelectedImageIndex(null)
+								}}
+							>
 								<VisuallyHidden.Root>
 									<DialogTitle>Bild</DialogTitle>
 									<DialogDescription>{image.alt || 'Bild'} </DialogDescription>
@@ -47,15 +70,35 @@ const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
 								<DialogTrigger asChild>
 									<PreviewImage
 										image={image}
-										onClick={() => setSelectedImage(image)}
+										onClick={() => setSelectedImageIndex(idx)}
 									/>
 								</DialogTrigger>
 								<DialogContent className="p-2 sm:max-w-3xl sm:p-4">
-									<Img
-										className="h-auto max-h-[80vh] w-full object-contain"
-										image={image}
-										imageWidth={1200}
-									/>
+									<div className="relative h-auto max-h-[80vh] w-full">
+										<Img
+											className="relative h-full w-full object-contain"
+											image={
+												selectedImageIndex !== null
+													? images[selectedImageIndex]
+													: image
+											}
+											imageWidth={1200}
+										/>
+										<button
+											onClick={handlePrevious}
+											className="absolute bottom-2 left-2 flex -translate-y-1/2 place-items-center rounded-full bg-vsc-blue p-1 shadow-lg hover:bg-vsc-blue/50"
+											aria-label="Previous image"
+										>
+											<ChevronLeft className="h-6 w-6" />
+										</button>
+										<button
+											onClick={handleNext}
+											className="absolute bottom-2 right-2 flex -translate-y-1/2 place-items-center rounded-full bg-vsc-blue p-1 shadow-lg hover:bg-vsc-blue/50"
+											aria-label="Next image"
+										>
+											<ChevronRight className="h-6 w-6" />
+										</button>
+									</div>
 								</DialogContent>
 							</Dialog>
 						))
