@@ -4,12 +4,15 @@ import { cn } from '@/lib/utils'
 import css from './PostContent.module.css'
 import { Categories, DateBadge } from './vsc-post-content-components'
 import ImageGallery from '../ImageGallery'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function PostContent({
 	post,
 	...props
 }: { post?: Sanity.BlogPost } & Sanity.Module) {
 	if (!post) return null
+
+	console.log(post.gallery && stegaClean(post.gallery.position) === 'top')
 
 	return (
 		<article id={uid(props)}>
@@ -21,6 +24,10 @@ export default function PostContent({
 				</div>
 			</header>
 
+			{post.gallery && stegaClean(post.gallery.position) === 'top' ? (
+				<ImageGallery images={post.gallery.images} />
+			) : null}
+
 			<section className="mx-auto max-w-5xl px-4 py-4 sm:px-12 sm:py-6">
 				<Content
 					value={post.body}
@@ -28,7 +35,9 @@ export default function PostContent({
 				></Content>
 			</section>
 
-			{post.gallery ? <ImageGallery images={post.gallery.images} /> : null}
+			{post.gallery && stegaClean(post.gallery.position) === 'bottom' ? (
+				<ImageGallery images={post.gallery.images} />
+			) : null}
 		</article>
 	)
 }

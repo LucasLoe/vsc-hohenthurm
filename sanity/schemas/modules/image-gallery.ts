@@ -14,6 +14,19 @@ export default defineType({
 				},
 			],
 		},
+		{
+			name: 'position',
+			title: 'Gallery Position in Blog Posts',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Top of page', value: 'top' },
+					{ title: 'Bottom of page', value: 'bottom' },
+				],
+				layout: 'radio',
+			},
+			initialValue: 'top',
+		},
 	],
 	preview: {
 		select: {
