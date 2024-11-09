@@ -3,13 +3,15 @@ import React, { useState } from 'react'
 import Img from '../Img'
 import {
 	Dialog,
+	DialogClose,
 	DialogContent,
 	DialogDescription,
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, CircleX, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const PreviewImage = ({
 	image,
@@ -74,6 +76,11 @@ const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
 									/>
 								</DialogTrigger>
 								<DialogContent className="p-2 sm:max-w-3xl sm:p-4">
+									<DialogClose asChild>
+										<button className="z-50 ml-auto mr-0 flex size-6 place-items-center rounded-full bg-vsc-bg-dark p-0.5 text-white shadow-lg">
+											<X className="m-auto size-4" />
+										</button>
+									</DialogClose>
 									<div className="relative h-auto max-h-[80vh] w-full">
 										<Img
 											className="relative h-full w-full object-contain"
@@ -89,14 +96,14 @@ const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
 											className="absolute bottom-2 left-2 flex -translate-y-1/2 place-items-center rounded-full bg-vsc-blue p-1 shadow-lg hover:bg-vsc-blue/50"
 											aria-label="Previous image"
 										>
-											<ChevronLeft className="h-6 w-6" />
+											<ChevronLeft className="size-6" />
 										</button>
 										<button
 											onClick={handleNext}
 											className="absolute bottom-2 right-2 flex -translate-y-1/2 place-items-center rounded-full bg-vsc-blue p-1 shadow-lg hover:bg-vsc-blue/50"
 											aria-label="Next image"
 										>
-											<ChevronRight className="h-6 w-6" />
+											<ChevronRight className="size-6" />
 										</button>
 									</div>
 								</DialogContent>
