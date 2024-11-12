@@ -9,7 +9,7 @@ import MainNavigationMenu from '@/ui/navigation/main-navigation-menu'
 
 export const metadata: Metadata = {
 	icons: {
-		icon: `../favicon.ico`,
+		icon: `/favicon.ico`,
 	},
 }
 
