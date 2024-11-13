@@ -12,7 +12,7 @@ export function ArchivePost({ post }: PostProps) {
 				<div className="relative h-48">
 					<Image
 						src={post.metadata.ogimage}
-						alt={post.title}
+						alt={post.title!}
 						fill
 						className="object-cover"
 					/>
@@ -30,7 +30,9 @@ export function ArchivePost({ post }: PostProps) {
 						</span>
 					))}
 				</div>
-				{post.excerpt && <p className="mt-2 text-gray-600">{post.excerpt}</p>}
+				{
+					// post.excerpt && <p className="mt-2 text-gray-600">{post.excerpt}</p>
+				}
 				<time className="mt-2 text-sm text-gray-500">
 					{new Date(post.publishDate).toLocaleDateString()}
 				</time>
