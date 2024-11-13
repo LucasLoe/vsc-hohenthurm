@@ -2,6 +2,7 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { stegaClean } from '@sanity/client/stega'
 import { Button } from '@/components/ui/button'
+import { ExternalLink } from 'lucide-react'
 
 export default function CTA({
 	link,
@@ -44,9 +45,8 @@ export default function CTA({
 	if (link?.type === 'external' && link.external)
 		return (
 			<Button
-				asChild
 				variant={'outline'}
-				className="border-[1px] py-1 font-normal no-underline shadow-inner"
+				className="flex place-items-center gap-x-2 border-[1px] py-1 font-normal no-underline shadow-inner"
 			>
 				<Link
 					href={stegaClean(link.external)}
@@ -54,6 +54,7 @@ export default function CTA({
 					{...props}
 					style={{ textDecoration: 'none' }}
 				/>
+				<ExternalLink size={18} strokeWidth={1} />
 			</Button>
 		)
 

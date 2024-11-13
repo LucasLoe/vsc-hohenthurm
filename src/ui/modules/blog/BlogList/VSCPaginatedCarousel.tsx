@@ -68,7 +68,7 @@ const VSCPaginatedCarousel = ({ posts }: VSCPaginatedCarouselProps) => {
 						{posts.map((post, index) => (
 							<CarouselItem
 								key={index}
-								className="pl-2 sm:basis-1/2 sm:pl-4 lg:basis-1/3"
+								className="pl-2 sm:basis-1/2 sm:pl-4 lg:basis-1/3 2xl:basis-1/4"
 							>
 								<VSCPostPreview post={post} />
 							</CarouselItem>

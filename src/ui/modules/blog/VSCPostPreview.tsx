@@ -52,7 +52,7 @@ export default function VSCPostPreview({ post }: { post: Sanity.BlogPost }) {
 			className="group block space-y-2"
 			href={processUrl(post, { base: false })}
 		>
-			<Card className="mx-auto flex aspect-[4.2/3.5] max-w-96 flex-col justify-between rounded-sm border-0 shadow-lg">
+			<Card className="mx-auto flex max-w-96 flex-col justify-between rounded-sm border-0 shadow-lg">
 				<CardHeader className="p-4 shadow-inner">
 					<figure className="relative aspect-[1.3/1] overflow-hidden rounded-t-sm bg-ink/5">
 						<Img
