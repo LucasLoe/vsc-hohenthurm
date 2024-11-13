@@ -81,10 +81,9 @@ export default function Hero({
 							})}
 							reputation={reputation}
 						/>
-
 						<CTAList
 							ctas={ctas}
-							className={cn('!mt-4', {
+							className={cn('!mt-12', {
 								'justify-start': stegaClean(textAlign) === 'left',
 								'justify-center': stegaClean(textAlign) === 'center',
 								'justify-end': stegaClean(textAlign) === 'right',
