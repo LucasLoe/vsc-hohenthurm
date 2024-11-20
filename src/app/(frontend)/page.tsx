@@ -23,7 +23,7 @@ async function getPage() {
 			modules[]{ ${modulesQuery} },
 			metadata {
 				...,
-				'ogimage': image.asset->url + '?w=1200',
+				'ogimage': image.asset->url + '?w=1600',
 			}
 		}`,
 		{ tags: ['homepage'] },
