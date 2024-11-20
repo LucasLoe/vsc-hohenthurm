@@ -33,8 +33,6 @@
 	}
 
 	html {
-		accent-color: theme('colors.accent');
-		caret-color: theme('colors.accent');
 		scroll-behavior: smooth;
 	}
 
@@ -195,10 +193,6 @@
 	}
 
 	/* layout */
-
-	.section {
-		@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
-	}
 
 	/* richtext */
 
