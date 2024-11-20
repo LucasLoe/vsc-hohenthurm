@@ -101,7 +101,8 @@ const page = () => {
 					{
 						<ul className="list-none">
 							<li className='flex items-start gap-2 before:text-vsc-blue before:content-["❄"]'>
-								Programm mit Kita, Schulchor und den lustigen Thurmgeistern
+								Programm mit Musikschule Fröhlich, Schulchor und den lustigen
+								Thurmgeistern
 							</li>
 							<li className='flex items-start gap-2 before:text-vsc-blue before:content-["❄"]'>
 								Besuch vom Weihnachtsmann und der Märchentante
