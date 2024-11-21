@@ -14,6 +14,18 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
+			name: 'variant',
+			title: 'Variante',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Standard', value: 'normal' },
+					{ title: 'Weihnachten', value: 'christmas' },
+				],
+				layout: 'radio',
+			},
+		}),
+		defineField({
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
