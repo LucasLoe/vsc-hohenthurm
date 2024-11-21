@@ -48,7 +48,7 @@ const Snowfall = () => {
 		}
 
 		// Continuous generation
-		const interval = setInterval(createSnowflake, 2000)
+		const interval = setInterval(createSnowflake, 500)
 
 		// Cleanup
 		return () => {
