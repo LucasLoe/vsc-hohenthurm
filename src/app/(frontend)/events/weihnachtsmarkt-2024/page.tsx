@@ -3,6 +3,7 @@ import Snowfall from './snowfall'
 import './snowfall.css'
 import { Mountains_of_Christmas } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 const mountainsOfChristmas = Mountains_of_Christmas({
 	weight: ['400', '700'],
@@ -97,6 +98,15 @@ const page = () => {
 						</>
 					}
 				</Entry>
+				<div className="bg-vsc-bg-dark">
+					<Image
+						className="h-32 w-32"
+						alt=""
+						src="/images/abc.png"
+						width={800}
+						height={600}
+					/>
+				</div>
 				<Entry heading="Programm">
 					{
 						<ul className="list-none">

@@ -1,0 +1,224 @@
+.st0 {
+	fill: #1b365d;
+}
+.st1 {
+	fill: #1c3d6e;
+}
+.st2 {
+	fill: #1e447f;
+}
+.st3 {
+	fill: #204b90;
+}
+.st4 {
+	fill: #2252a1;
+}
+.st5 {
+	fill: #2459b2;
+}
+.st6 {
+	fill: #ffffff;
+}
+.st7 {
+	opacity: 0.4;
+}
+.st8 {
+	opacity: 0.4;
+	fill: #ffffff;
+}
+.st9 {
+	fill: #fffad7;
+}
+.st10 {
+	fill: #f2e69e;
+}
+.st11 {
+	fill: #1b3159;
+}
+.st12 {
+	fill: #1a4d89;
+}
+.st13 {
+	fill: #231f20;
+}
+.st14 {
+	font-family: 'MountainsofChristmas-Regular';
+}
+.st15 {
+	font-size: 75.9231px;
+}
+.st16 {
+	fill: #4b4b4b;
+}
+
+@keyframes twinkle {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+@keyframes snowfall {
+	0% {
+		transform: translate(0px, 0px);
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate(80px, 150px);
+	}
+}
+@keyframes lightson {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes dimlight {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.95;
+	}
+}
+@keyframes sleighpath {
+	0% {
+		opacity: 0;
+		transform: translate(-3000px, 1000px);
+	}
+
+	30% {
+		opacity: 1;
+		transform: translate(0, 0px);
+	}
+	31% {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+	35% {
+		opacity: 1;
+		transform: translate(0, -5px);
+	}
+	40% {
+		opacity: 1;
+		transform: translate(0, 5px);
+	}
+	45% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	50% {
+		opacity: 1;
+		transform: translate(0, 5px);
+	}
+	55% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	60% {
+		opacity: 1;
+		transform: translate(0, 5px);
+	}
+	65% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	70% {
+		opacity: 1;
+		transform: translate(0, 5px);
+	}
+	75% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	80% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(3000px, -1000px);
+	}
+}
+#moon {
+	animation: dimlight 4s ease infinite;
+}
+#Layer_15,
+#OBJECTS {
+	opacity: 0;
+	animation: lightson 1s ease 5s forwards;
+}
+#star1 {
+	animation: twinkle 2s ease infinite;
+}
+
+#star2 {
+	animation: twinkle 4s ease 1s infinite;
+}
+
+#star3 {
+	animation: twinkle 4s ease 0.5s infinite;
+}
+
+#star4 {
+	animation: twinkle 3s ease 2s infinite;
+}
+#sleigh {
+	opacity: 0;
+	animation: sleighpath 5s ease 1s forwards;
+}
+#snow1 {
+	animation: snowfall 2s infinite;
+}
+#snow2 {
+	animation: snowfall 1s 0.25s infinite;
+}
+#snow3 {
+	animation: snowfall 1s 0.5s infinite;
+}
+#snow4 {
+	animation: snowfall 1s 1s infinite;
+}
+#snow5 {
+	animation: snowfall 2s 1.25s infinite;
+}
+#snow6 {
+	animation: snowfall 1.5s 1.5s infinite;
+}
+#snow7 {
+	animation: snowfall 0.5s 0.4s infinite;
+}
+#snow8 {
+	animation: snowfall 0.5s 1s infinite;
+}
+#snow9 {
+	animation: snowfall 1.5s 0.5s infinite;
+}
+#snow10 {
+	animation: snowfall 1.5s 1s infinite;
+}
+#snow11 {
+	animation: snowfall 0.5s 0.25s infinite;
+}
+.container-svg {
+	width: 100%;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 700px) {
+	.container-svg {
+		text-align: center;
+		height: 100%;
+	}
+	.container-svg > svg {
+		height: 100%;
+	}
+}
