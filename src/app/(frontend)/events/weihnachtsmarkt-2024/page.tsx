@@ -118,14 +118,7 @@ const page = () => {
 				</Entry>
 				<Entry heading="Organisiert von:">
 					<div className="align-items-center flex flex-wrap justify-start gap-2">
-						{ORGANIZED_BY.map((org) => (
-							<p
-								key={org}
-								className="rounded-full border-[1px] border-dashed border-white px-2 py-0.5 text-sm font-light"
-							>
-								{org}
-							</p>
-						))}
+						<p className="font-light">{ORGANIZED_BY.join(' ❅ ')}</p>
 					</div>
 				</Entry>
 			</section>

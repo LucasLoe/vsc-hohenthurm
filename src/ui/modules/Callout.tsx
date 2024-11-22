@@ -15,7 +15,7 @@ const mountainsOfChristmas = Mountains_of_Christmas({
 const Christmaslayout = ({ href }: { href: string }) => {
 	return (
 		<section className="section">
-			<div className="relative mx-auto aspect-[1200/800] w-80 shadow-lg sm:w-[500px] lg:w-[700px]">
+			<div className="relative mx-auto aspect-[1200/800] w-full shadow-lg sm:w-[500px] lg:w-[700px]">
 				<ChristmasCallout />
 				<div className="absolute bottom-2 left-1/2 -translate-x-1/2 sm:bottom-4">
 					<div className="flex w-fit place-items-center gap-x-4 lg:gap-x-8">
