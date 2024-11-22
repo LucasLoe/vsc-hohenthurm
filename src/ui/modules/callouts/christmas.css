@@ -154,14 +154,14 @@
 #Layer_15,
 #OBJECTS {
 	opacity: 0;
-	animation: lightson 1s ease 5s forwards;
+	animation: lightson 3s ease 5s forwards;
 }
 #star1 {
 	animation: twinkle 2s ease infinite;
 }
 
 #star2 {
-	animation: twinkle 4s ease 1s infinite;
+	animation: twinkle 4s ease 3s infinite;
 }
 
 #star3 {
@@ -173,19 +173,19 @@
 }
 #sleigh {
 	opacity: 0;
-	animation: sleighpath 5s ease 1s forwards;
+	animation: sleighpath 5s ease 1.5s infinite;
 }
 #snow1 {
 	animation: snowfall 2s infinite;
 }
 #snow2 {
-	animation: snowfall 1s 0.25s infinite;
+	animation: snowfall 3s 0.25s infinite;
 }
 #snow3 {
-	animation: snowfall 1s 0.5s infinite;
+	animation: snowfall 3s 3s infinite;
 }
 #snow4 {
-	animation: snowfall 1s 1s infinite;
+	animation: snowfall 3s 3s infinite;
 }
 #snow5 {
 	animation: snowfall 2s 1.25s infinite;
@@ -194,19 +194,19 @@
 	animation: snowfall 1.5s 1.5s infinite;
 }
 #snow7 {
-	animation: snowfall 0.5s 0.4s infinite;
+	animation: snowfall 0.5s 2s infinite;
 }
 #snow8 {
-	animation: snowfall 0.5s 1s infinite;
+	animation: snowfall 0.5s 3s infinite;
 }
 #snow9 {
-	animation: snowfall 1.5s 0.5s infinite;
+	animation: snowfall 1.5s 2.5s infinite;
 }
 #snow10 {
-	animation: snowfall 1.5s 1s infinite;
+	animation: snowfall 1.5s 3s infinite;
 }
 #snow11 {
-	animation: snowfall 0.5s 0.25s infinite;
+	animation: snowfall 0.5s 2s infinite;
 }
 .container-svg {
 	width: 100%;
