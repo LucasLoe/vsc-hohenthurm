@@ -7,6 +7,7 @@ import { Mountains_of_Christmas } from 'next/font/google'
 import processUrl from '@/lib/processUrl'
 import { stegaClean } from '@sanity/client/stega'
 import { Button } from '@/components/ui/button'
+import { Megaphone } from 'lucide-react'
 
 const mountainsOfChristmas = Mountains_of_Christmas({
 	weight: ['400', '700'],
@@ -14,7 +15,7 @@ const mountainsOfChristmas = Mountains_of_Christmas({
 	display: 'swap',
 })
 
-const Christmaslayout = ({ cta }: { cta: Sanity.CTA }) => {
+const ChristmasLayout = ({ cta }: { cta: Sanity.CTA }) => {
 	let href = '#'
 
 	if (cta.link?.type === 'internal' && cta.link.internal) {
@@ -57,11 +58,48 @@ const Christmaslayout = ({ cta }: { cta: Sanity.CTA }) => {
 	)
 }
 
+const NormalLayout = ({
+	content,
+	cta,
+	title,
+}: {
+	content: any
+	cta: Sanity.CTA
+	title: string | undefined
+}) => {
+	return (
+		<div
+			className={cn(
+				'mx-auto grid max-w-screen-lg items-center gap-12 gap-y-6 px-4 pb-12 md:grid-cols-[1fr,2fr] md:px-8 md:py-0',
+				'rounded bg-vsc-bg-dark text-vsc-bg-light shadow-lg',
+				'text-center md:text-left',
+			)}
+		>
+			<div className="flex h-full w-full justify-center md:justify-start">
+				<Megaphone className="size-64" />
+			</div>
+			<div className="flex flex-col gap-y-2 md:gap-y-4">
+				{title ? (
+					<p className="text-xl font-medium md:text-2xl">{title}</p>
+				) : null}
+				<div className={cn('richtext', 'text-md font-light')}>
+					<PortableText value={content} />
+				</div>
+				<div className="flex h-full w-full justify-center md:justify-start">
+					<CTA className="max-sm:mx-auto max-sm:w-64" {...cta} style={'pink'} />
+				</div>
+			</div>
+		</div>
+	)
+}
+
 export default function Callout({
 	content,
 	cta,
 	variant,
+	title,
 }: Partial<{
+	title: string | undefined
 	content: any
 	cta: Sanity.CTA
 	variant: 'normal' | 'christmas'
@@ -69,25 +107,17 @@ export default function Callout({
 	if (variant === 'christmas' && cta) {
 		return (
 			<section className="section">
-				<Christmaslayout cta={cta} />
+				<ChristmasLayout cta={cta} />
 			</section>
 		)
 	}
 
+	// <Christmaslayout cta={cta} />
+
 	if (variant === 'normal' && cta) {
 		return (
 			<section className="section">
-				<div
-					className={cn(
-						'section grid max-w-screen-lg items-center gap-12 gap-y-6 rounded bg-accent/5 md:grid-cols-[2fr,1fr]',
-						'border-[1px] border-black',
-					)}
-				>
-					<div className={cn('richtext', 'text-lg font-light')}>
-						<PortableText value={content} />
-					</div>
-					<CTA className="max-sm:mx-auto max-sm:w-64" {...cta} />
-				</div>
+				<NormalLayout title={title} content={content} cta={cta} />
 			</section>
 		)
 	}
