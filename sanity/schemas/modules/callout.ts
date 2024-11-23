@@ -9,6 +9,10 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
+			name: 'title',
+			type: 'string',
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
