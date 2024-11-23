@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Mountains_of_Christmas } from 'next/font/google'
 import processUrl from '@/lib/processUrl'
 import { stegaClean } from '@sanity/client/stega'
+import { Button } from '@/components/ui/button'
 
 const mountainsOfChristmas = Mountains_of_Christmas({
 	weight: ['400', '700'],
@@ -42,10 +43,14 @@ const Christmaslayout = ({ cta }: { cta: Sanity.CTA }) => {
 					>
 						Weihnachtsmarkt Hohenthurm 2024
 					</p>
-					<CTA
-						className="w-fit text-ellipsis max-sm:mx-auto max-sm:w-64"
-						{...cta}
-					/>
+					<Link href={href}>
+						<Button
+							variant="outline"
+							className="!w-fit text-ellipsis border-[1px] px-2 py-0 text-xs max-sm:mx-auto max-sm:w-64 sm:text-sm"
+						>
+							{cta.link?.label || 'Mehr erfahren'}
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</div>
