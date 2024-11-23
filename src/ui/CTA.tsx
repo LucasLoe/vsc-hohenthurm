@@ -45,8 +45,8 @@ export default function CTA({
 	if (link?.type === 'external' && link.external)
 		return (
 			<Button
-				variant={'outline'}
-				className="flex place-items-center gap-x-2 border-[1px] py-1 font-normal no-underline shadow-inner"
+				variant={variant}
+				className="flex place-items-center gap-x-2 border-[1px] py-1 font-normal no-underline"
 			>
 				<Link
 					href={stegaClean(link.external)}
