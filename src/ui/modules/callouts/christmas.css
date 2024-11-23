@@ -173,41 +173,43 @@
 }
 #sleigh {
 	opacity: 0;
-	animation: sleighpath 5s ease 1.5s infinite;
+	animation: sleighpath 8s ease 5s infinite;
 }
+
 #snow1 {
-	animation: snowfall 2s infinite;
+	animation: snowfall 8s infinite;
 }
 #snow2 {
-	animation: snowfall 3s 0.25s infinite;
+	animation: snowfall 10s 1s infinite;
 }
 #snow3 {
-	animation: snowfall 3s 3s infinite;
+	animation: snowfall 9s 2s infinite;
 }
 #snow4 {
-	animation: snowfall 3s 3s infinite;
+	animation: snowfall 11s 0.5s infinite;
 }
 #snow5 {
-	animation: snowfall 2s 1.25s infinite;
+	animation: snowfall 9s 3s infinite;
 }
 #snow6 {
-	animation: snowfall 1.5s 1.5s infinite;
+	animation: snowfall 10s 2s infinite;
 }
 #snow7 {
-	animation: snowfall 0.5s 2s infinite;
+	animation: snowfall 8s 1.5s infinite;
 }
 #snow8 {
-	animation: snowfall 0.5s 3s infinite;
+	animation: snowfall 11s 2.5s infinite;
 }
 #snow9 {
-	animation: snowfall 1.5s 2.5s infinite;
+	animation: snowfall 9s 1.75s infinite;
 }
 #snow10 {
-	animation: snowfall 1.5s 3s infinite;
+	animation: snowfall 10s 3s infinite;
 }
 #snow11 {
-	animation: snowfall 0.5s 2s infinite;
+	animation: snowfall 8s 2.25s infinite;
 }
+
 .container-svg {
 	width: 100%;
 	overflow: hidden;
