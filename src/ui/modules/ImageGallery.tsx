@@ -78,10 +78,10 @@ const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
 											key={index}
 											className="flex place-items-center pl-1"
 										>
-											<div className="h-[60vh] w-full">
+											<div className="h-[60vh] w-full animate-pulse bg-slate-200">
 												<Img
 													image={carouselImage}
-													alt={carouselImage.alt || 'Gallery image'}
+													alt={''}
 													className="h-full w-full object-contain"
 												/>
 											</div>
