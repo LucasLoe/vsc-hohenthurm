@@ -1,10 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import Image from 'next/image'
 import Img from '../Img'
 import {
 	Dialog,
-	DialogClose,
 	DialogContent,
 	DialogDescription,
 	DialogTitle,
@@ -18,8 +16,6 @@ import {
 	CarouselPrevious,
 } from '@/components/ui/carousel'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { ChevronLeft, ChevronRight, CircleX, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 
 const PreviewImage = ({
 	image,
@@ -78,7 +74,7 @@ const ImageGallery = ({ images }: { images: Sanity.Image[] }) => {
 											key={index}
 											className="flex place-items-center pl-1"
 										>
-											<div className="h-[60vh] w-full animate-pulse bg-slate-200">
+											<div className="h-[60vh] w-full">
 												<Img
 													image={carouselImage}
 													alt={''}
