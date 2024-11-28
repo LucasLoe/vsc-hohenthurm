@@ -5,7 +5,6 @@ import {
 import client from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/urlFor'
 import { stegaClean } from '@sanity/client/stega'
-import { useState } from 'react'
 
 const SIZES = [
 	120, 160, 200, 240, 320, 400, 480, 520, 560, 600, 640, 800, 960, 1280, 1440,
@@ -25,8 +24,6 @@ export default function Img({
 	imageSizes?: number[]
 	options?: UseNextSanityImageOptions
 } & React.ImgHTMLAttributes<HTMLImageElement>) {
-	const [isLoading, setIsLoading] = useState(true)
-
 	if (!image?.asset) return null
 
 	const { src, width, height } = useNextSanityImage(
@@ -36,25 +33,18 @@ export default function Img({
 	)
 
 	return (
-		<div className="relative h-full w-full">
-			<div
-				className={`absolute inset-0 animate-pulse bg-gray-200 ${isLoading ? 'visible' : 'invisible'}`}
-			/>
-			<img
-				src={src}
-				srcSet={
-					generateSrcset(image, { width: imageWidth, sizes: imageSizes }) || src
-				}
-				width={width}
-				height={height}
-				alt={image.alt || alt}
-				loading={stegaClean(image.loading) || 'lazy'}
-				decoding="async"
-				onLoad={() => setIsLoading(false)}
-				className={`${props.className || ''} ${isLoading ? 'invisible' : 'visible'}`}
-				{...props}
-			/>
-		</div>
+		<img
+			src={src}
+			srcSet={
+				generateSrcset(image, { width: imageWidth, sizes: imageSizes }) || src
+			}
+			width={width}
+			height={height}
+			alt={image.alt || alt}
+			loading={stegaClean(image.loading) || 'lazy'}
+			decoding="async"
+			{...props}
+		/>
 	)
 }
 
