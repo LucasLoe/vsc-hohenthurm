@@ -31,10 +31,11 @@ const FormattedDate = ({ value }: { value: string }) => {
 }
 
 export function ArchivePost({ post }: PostProps) {
+	console.log(processUrl(post, { base: true }))
 	return (
 		<Link
 			className="group block space-y-2"
-			href={processUrl(post, { base: false })}
+			href={'/blog/' + processUrl(post, { base: false })}
 		>
 			<Card className="mx-auto flex max-w-96 flex-col justify-between rounded-sm border-0 shadow-lg">
 				<CardHeader className="p-4 shadow-inner">
