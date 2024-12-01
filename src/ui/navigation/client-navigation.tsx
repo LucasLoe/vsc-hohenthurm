@@ -25,7 +25,18 @@ import {
 	SheetTrigger,
 } from '@/components/ui/sheet'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-
+import { InstagramIcon, ShoppingCartIcon } from 'lucide-react'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 interface ProcessedMenuItem {
 	_type: string
 	href?: string
@@ -60,6 +71,18 @@ const ClientNavigationMenu: React.FC<ClientNavigationMenuProps> = ({
 						}
 						return null
 					})}
+					<div className="flex items-center gap-4 px-1 text-white">
+						<ExternalNavItem
+							text="Möchtest du zu unserem Instagram-Account weitergeleitet werden?"
+							icon={<InstagramIcon className="size-8" />}
+							url="https://www.instagram.com/vsc.hohenthurm"
+						/>
+						<ExternalNavItem
+							text="Möchtest du zu unserem externen Fanshop weitergeleitet werden?"
+							icon={<ShoppingCartIcon className="size-8" />}
+							url="https://vsc-hohenthurm.fan12.de/"
+						/>
+					</div>
 				</NavigationMenuList>
 			</div>
 			<div className="w-full sm:hidden">
@@ -96,20 +119,35 @@ const ClientNavigationMenu: React.FC<ClientNavigationMenuProps> = ({
 									isActive={pathname === '/'}
 									closeMenu={() => setIsMobileMenuOpen(false)}
 								/>
-								{items.map((item, key) => {
-									if (item._type === 'link' && item.href) {
-										return (
-											<MobileNavigationEntry
-												key={key}
-												title={item.label || ''}
-												href={item.href}
-												isActive={pathname === item.href}
-												closeMenu={() => setIsMobileMenuOpen(false)}
-											/>
-										)
-									}
-									return null
-								})}
+								<>
+									{items.map((item, key) => {
+										if (item._type === 'link' && item.href) {
+											return (
+												<MobileNavigationEntry
+													key={key}
+													title={item.label || ''}
+													href={item.href}
+													isActive={pathname === item.href}
+													closeMenu={() => setIsMobileMenuOpen(false)}
+												/>
+											)
+										}
+										return null
+									})}
+									<Separator />
+									<div className="mb-0 mt-auto flex w-full items-center gap-4 px-1 text-white">
+										<ExternalNavItem
+											text="Möchtest du zu unserem Instagram-Account weitergeleitet werden?"
+											icon={<InstagramIcon className="size-9" />}
+											url="https://www.instagram.com/vsc.hohenthurm"
+										/>
+										<ExternalNavItem
+											text="Möchtest du zu unserem externen Fanshop weitergeleitet werden?"
+											icon={<ShoppingCartIcon className="size-9" />}
+											url="https://vsc-hohenthurm.fan12.de/"
+										/>
+									</div>
+								</>
 							</NavigationMenuList>
 						</SheetContent>
 					</Sheet>
@@ -178,6 +216,49 @@ const NavigateHome: React.FC<{
 				</NavigationMenuLink>
 			</Link>
 		</NavigationMenuItem>
+	)
+}
+
+const ExternalNavItem = ({
+	text,
+	icon,
+	url,
+}: {
+	text: string
+	icon: React.ReactNode
+	url: string
+}) => {
+	const [isOpen, setIsOpen] = React.useState(false)
+
+	return (
+		<Dialog open={isOpen} onOpenChange={setIsOpen}>
+			<DialogTrigger
+				className="size-10 cursor-pointer rounded p-1 hover:bg-vsc-blue hover:text-black"
+				asChild
+			>
+				{icon}
+			</DialogTrigger>
+			<DialogContent className="max-w-80 sm:max-w-96">
+				<DialogHeader>
+					<DialogTitle>Weiterleitung:</DialogTitle>
+					<DialogDescription className="py-4">{text}</DialogDescription>
+				</DialogHeader>
+				<DialogFooter className="flex flex-row items-center justify-end gap-4">
+					<Button
+						onClick={() => setIsOpen(false)}
+						className="max-w-32 border-[1px] font-light"
+						variant="outline"
+					>
+						Zurück
+					</Button>
+					<Link href={url} target="_blank">
+						<Button className="max-w-32" variant="secondary">
+							OK
+						</Button>
+					</Link>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 	)
 }
 
