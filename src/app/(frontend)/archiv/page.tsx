@@ -1,5 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import Archive from './archive'
+import { Suspense } from 'react'
 
 async function getPosts() {
 	return await fetchSanity<Sanity.BlogPost[]>(
@@ -32,7 +33,9 @@ export default async function ArchivePage() {
 
 	return (
 		<div className="container mx-auto flex w-full flex-col place-items-center px-4">
-			<Archive posts={posts} categories={[]} />
+			<Suspense fallback={<p>Wird geladen ... </p>}>
+				<Archive posts={posts} categories={[]} />
+			</Suspense>
 		</div>
 	)
 }
