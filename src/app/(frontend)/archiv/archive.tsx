@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { ArchiveFilterBar } from './archive-filter-bar'
 import { ArchivePost } from './archive-post'
 import { useSearchParams } from 'next/navigation'
@@ -27,7 +27,7 @@ const Archive = ({
 		: _posts
 
 	return (
-		<>
+		<Suspense fallback={<p>Wird geladen ... </p>}>
 			<ArchiveFilterBar />
 			{filteredPosts?.length > 0 ? (
 				<div className="grid w-full grid-cols-1 gap-6 py-8 md:grid-cols-2 lg:grid-cols-3">
@@ -38,7 +38,7 @@ const Archive = ({
 			) : (
 				<NoEntries />
 			)}
-		</>
+		</Suspense>
 	)
 }
 
