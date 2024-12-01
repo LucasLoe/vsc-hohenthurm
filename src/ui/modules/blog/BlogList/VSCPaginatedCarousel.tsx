@@ -12,6 +12,8 @@ import VSCPostPreview from '../VSCPostPreview'
 import BlueGeometric from '@/ui/backgrounds/BlueGeometric'
 import { ComponentInstanceIcon } from '@radix-ui/react-icons'
 import { FaVolleyball } from 'react-icons/fa6'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 type VSCPaginatedCarouselProps = {
 	posts: Sanity.BlogPost[]
@@ -85,6 +87,10 @@ const VSCPaginatedCarousel = ({ posts }: VSCPaginatedCarouselProps) => {
 							active={i === current}
 						/>
 					))}
+				</div>
+				<div className="flex w-full items-center justify-end gap-x-2 text-white">
+					<ArrowRight className="size-5" />
+					<Link href="/archiv">Zum Archiv</Link>
 				</div>
 			</BlueGeometric>
 		</section>

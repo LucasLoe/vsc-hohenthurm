@@ -1,40 +1,56 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useCallback } from 'react'
 
 const categories = [
 	{ slug: 'volleyball', title: 'Volleyball' },
-	{ slug: 'basketball', title: 'Basketball' },
+	{ slug: 'mixed', title: 'Mixed' },
+	{ slug: 'herren', title: 'Herren' },
+	{ slug: 'events', title: 'Events' },
 ]
 
 export function ArchiveFilterBar() {
-	const router = useRouter()
+	const pathname = usePathname()
 	const searchParams = useSearchParams()
-	const currentCategory = searchParams.get('category')
+	const filter = searchParams.get('filter')
+
+	const createQueryString = useCallback(
+		(name: string, value: string) => {
+			const params = new URLSearchParams(searchParams.toString())
+			params.set(name, value)
+
+			return params.toString()
+		},
+		[searchParams],
+	)
 
 	return (
-		<div className="flex h-16 w-full items-center bg-vsc-blue px-4">
-			<div className="flex gap-4">
-				<button
-					onClick={() => router.push('/archive')}
-					className={`rounded-full px-4 py-2 ${
-						!currentCategory ? 'bg-white text-vsc-blue' : 'text-white'
-					}`}
-				>
-					All
-				</button>
-				{categories.map((category) => (
-					<button
-						key={category.slug}
-						onClick={() => router.push(`/archive?category=${category.slug}`)}
-						className={`rounded-full px-4 py-2 ${
-							currentCategory === category.slug
-								? 'bg-white text-vsc-blue'
-								: 'text-white'
-						}`}
+		<div className="w-full px-4 pt-4">
+			<div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+				<Link href={pathname}>
+					<Button
+						variant={filter === null ? 'secondary' : 'ghost'}
+						className={'w-full active:bg-vsc-blue'}
 					>
-						{category.title}
-					</button>
+						Alle
+					</Button>
+				</Link>
+				{categories.map((category) => (
+					<Link
+						href={pathname + '?' + createQueryString('filter', category.slug)}
+					>
+						<Button
+							variant={filter === category.slug ? 'secondary' : 'ghost'}
+							key={category.slug}
+							className={'w-full active:bg-vsc-blue'}
+						>
+							{category.title}
+						</Button>
+					</Link>
 				))}
 			</div>
 		</div>

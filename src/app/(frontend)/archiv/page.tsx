@@ -1,14 +1,9 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { ArchiveFilterBar } from './archive-filter-bar'
-import { ArchivePost } from './archive-post'
+import Archive from './archive'
 
-async function getPosts(category?: Sanity.BlogCategory['title']) {
-	const filter = category
-		? `&& '${category}' in categories[]->slug.current`
-		: ''
-
+async function getPosts() {
 	return await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post' ${filter}]
+		groq`*[_type == 'blog.post']
     |order(featured desc, publishDate desc){
       _id,
       title,
@@ -21,21 +16,23 @@ async function getPosts(category?: Sanity.BlogCategory['title']) {
 	)
 }
 
-type Props = {
-	searchParams: { category?: Sanity.BlogCategory['title'] }
+async function getCategories() {
+	return await fetchSanity<Sanity.BlogCategory[]>(
+		groq`*[_type == 'blog.category']{
+      _id,
+      title,
+      "slug": slug.current
+    }`,
+	)
 }
 
-export default async function ArchivePage({ searchParams }: Props) {
-	const posts = await getPosts(searchParams.category)
+export default async function ArchivePage() {
+	const posts = await getPosts()
+	const categories = await getCategories()
 
 	return (
-		<div className="container mx-auto px-4">
-			<ArchiveFilterBar />
-			<div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{posts.map((post) => (
-					<ArchivePost key={post._id} post={post} />
-				))}
-			</div>
+		<div className="container mx-auto flex w-full flex-col place-items-center px-4">
+			<Archive posts={posts} categories={[]} />
 		</div>
 	)
 }

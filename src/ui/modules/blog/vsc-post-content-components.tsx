@@ -1,5 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
+import { stegaClean } from '@sanity/client/stega'
 
 export const Categories = ({
 	categories,
@@ -11,12 +13,16 @@ export const Categories = ({
 	return (
 		<div className={cn('flex items-center gap-x-1', className || 'selection:')}>
 			{categories?.map((category) => (
-				<Badge
-					key={category._id}
-					className="bg-vsc-blue/50 text-vsc-bg-dark shadow-sm"
+				<Link
+					href={`/archiv?filter=${stegaClean(category.title).toLowerCase()}`}
 				>
-					{category.title}
-				</Badge>
+					<Badge
+						key={category._id}
+						className="bg-vsc-blue/50 text-vsc-bg-dark shadow-sm"
+					>
+						{category.title}
+					</Badge>
+				</Link>
 			))}
 		</div>
 	)
