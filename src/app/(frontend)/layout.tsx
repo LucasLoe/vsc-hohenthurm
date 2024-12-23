@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
 import MainNavigationMenu from '@/ui/navigation/main-navigation-menu'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
 	icons: {
@@ -26,7 +27,7 @@ export default async function RootLayout({
 					{children}
 				</main>
 				<Footer />
-
+				<Toaster />
 				<Analytics />
 				<SpeedInsights />
 				<VisualEditingControls />

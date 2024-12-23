@@ -31,7 +31,6 @@ const FormattedDate = ({ value }: { value: string }) => {
 }
 
 export function ArchivePost({ post }: PostProps) {
-	console.log(processUrl(post, { base: true }))
 	return (
 		<Link
 			className="group block space-y-2"
