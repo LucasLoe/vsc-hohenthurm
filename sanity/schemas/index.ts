@@ -49,6 +49,8 @@ import { matchSchedule } from './table/match-schedule'
 import heading from './atoms/heading'
 import spacing from './atoms/spacing'
 import imageGallery from './modules/image-gallery'
+// api
+import registration from './api/registration'
 
 export const schemaTypes = [
 	// documents
@@ -105,4 +107,7 @@ export const schemaTypes = [
 	// atoms
 	heading,
 	spacing,
+
+	// api
+	registration,
 ]
