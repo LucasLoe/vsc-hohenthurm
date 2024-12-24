@@ -1,14 +1,14 @@
 // pages/api/register.ts
 import client from '@/lib/sanity/client'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 
 const clientWithToken = client.withConfig({
 	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 })
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest, res: NextResponse) {
 	if (req.method !== 'POST') {
-		return res.status(405).json({ message: 'Method not allowed' })
+		return new Response('H', { status: 405 })
 	}
 	console.log(req.body)
 
