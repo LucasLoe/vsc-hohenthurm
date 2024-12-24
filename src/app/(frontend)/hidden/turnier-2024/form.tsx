@@ -7,6 +7,22 @@ import { Label } from '@/components/ui/label'
 import { Loader2 } from 'lucide-react'
 import { useFormState, useFormStatus } from 'react-dom'
 
+function SubmitButton() {
+	const { pending } = useFormStatus()
+	return (
+		<Button className="ml-auto" variant="pink" type="submit" disabled={pending}>
+			{pending ? (
+				<>
+					<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+					Registriere...
+				</>
+			) : (
+				'Registrieren'
+			)}
+		</Button>
+	)
+}
+
 type FormState = {
 	success: boolean
 	message: string
@@ -17,10 +33,14 @@ const initialState: FormState = {
 	message: '',
 }
 
-async function registerAction(prevState: any, formData: FormData) {
+async function registerAction(
+	_: FormState,
+	formData: FormData,
+): Promise<FormState> {
 	try {
 		const res = await fetch('/api/register', {
 			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				teamName: formData.get('teamName'),
 				playerCount: formData.get('playerCount'),
@@ -41,15 +61,11 @@ async function registerAction(prevState: any, formData: FormData) {
 }
 
 export default function RegistrationForm() {
-	const [state, formAction] = useFormState<FormState, FormData>(
-		registerAction,
-		initialState,
-	)
-	const { pending } = useFormStatus()
+	const [state, formAction] = useFormState(registerAction, initialState)
 
 	if (state.success) {
 		return (
-			<div className="my-4 rounded bg-vsc-blue px-4 py-2 text-center text-vsc-bg-dark shadow-2xl">
+			<div className="mx-auto my-4 rounded bg-vsc-blue px-4 py-2 text-center text-vsc-bg-dark shadow-2xl">
 				<h3 className="text-lg font-medium">Danke für deine Anmeldung!</h3>
 				<p className="text-sm font-light">
 					Wir melden uns einige Wochen vor dem Turnier.
@@ -90,21 +106,7 @@ export default function RegistrationForm() {
 			<Input name="h" type="text" className="hidden" />
 
 			<div className="flex items-center">
-				<Button
-					className="ml-auto"
-					variant="pink"
-					type="submit"
-					disabled={pending}
-				>
-					{pending ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Registriere...
-						</>
-					) : (
-						'Registrieren'
-					)}
-				</Button>
+				<SubmitButton />
 			</div>
 		</form>
 	)

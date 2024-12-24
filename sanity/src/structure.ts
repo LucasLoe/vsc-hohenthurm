@@ -27,8 +27,11 @@ const structure: StructureResolver = (S, context) =>
 				// S.documentTypeListItem('reputation'),
 				// S.documentTypeListItem('testimonial').title('Testimonials'),
 			]).icon(BsDatabaseAdd),
-			S.divider(),
 
+			S.divider(),
+			S.documentTypeListItem('tournament').title('Tournaments'),
+
+			S.divider(),
 			S.documentTypeListItem('registration').title(
 				'Turnierregistrierungen 2025',
 			),

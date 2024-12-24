@@ -51,6 +51,7 @@ import spacing from './atoms/spacing'
 import imageGallery from './modules/image-gallery'
 // api
 import registration from './api/registration'
+import tournament from './tournament/tournament'
 
 export const schemaTypes = [
 	// documents
@@ -110,4 +111,7 @@ export const schemaTypes = [
 
 	// api
 	registration,
+
+	//tournament
+	tournament,
 ]
