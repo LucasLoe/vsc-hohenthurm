@@ -1,13 +1,8 @@
 import React from 'react'
 import RegistrationFormTournament2024 from './form'
 import client from '@/lib/sanity/client'
-import { PortableText } from '@portabletext/react'
 import Img from '@/ui/Img'
-import { Roboto_Slab } from 'next/font/google'
-import { cn } from '@/lib/utils'
 import { Content, Title } from './client'
-
-const robotoSlab = Roboto_Slab({ subsets: ['latin'] })
 
 type VolleyballPage = {
 	heading: string
@@ -16,7 +11,7 @@ type VolleyballPage = {
 	content: any[]
 }
 
-export const getVolleyballPage = async () => {
+const getVolleyballPage = async () => {
 	const query = `*[_type == "tournament" && identifier == "turnier-2025"][0]`
 	return await client.fetch<VolleyballPage>(query)
 }
