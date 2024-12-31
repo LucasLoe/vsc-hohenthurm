@@ -20,9 +20,8 @@ const page = async () => {
 	const pageData = await getVolleyballPage()
 
 	return (
-		<div className="min-h-[calc(100vh-229px)] w-screen border-t-2 border-white bg-vsc-bg-dark text-vsc-bg-light">
+		<div className="min-h-[calc(100vh-220px)] w-screen border-t-2 border-white bg-vsc-bg-dark text-vsc-bg-light">
 			<div className="container mx-auto flex max-w-5xl flex-col gap-4 px-8 py-4 md:py-8">
-				<Title title={pageData?.heading} />
 				<div className="flex w-full flex-col items-stretch gap-y-4 py-4 md:flex-row">
 					<div className="flex w-full flex-col gap-y-8 sm:pt-4 md:w-1/2">
 						<div className="relative mx-auto h-40 w-full max-w-md">
@@ -54,6 +53,8 @@ const page = async () => {
 								</div>
 							</div>
 						</div>
+						<Title title={pageData?.heading} />
+
 						<Content content={pageData?.content} />
 					</div>
 					<div className="mx-auto flex w-full place-items-center md:w-1/2">

@@ -233,7 +233,7 @@ const ExternalNavItem = ({
 	return (
 		<Dialog open={isOpen} onOpenChange={setIsOpen}>
 			<DialogTrigger
-				className="size-10 cursor-pointer rounded p-1 hover:bg-vsc-blue hover:text-black"
+				className="size-12 cursor-pointer rounded p-1 hover:bg-vsc-blue hover:text-black"
 				asChild
 			>
 				{icon}

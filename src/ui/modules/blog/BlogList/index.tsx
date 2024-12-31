@@ -32,7 +32,7 @@ export default async function BlogList({
 	const currentLayout = stegaClean(layout) || 'vsc-paginated'
 
 	return (
-		<section className="section p-0">
+		<section className="p-0">
 			{intro && (
 				<header className="richtext">
 					<PortableText value={intro} />
