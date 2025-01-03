@@ -28,8 +28,6 @@ export default async function RootLayout({
 				</main>
 				<Footer />
 				<Toaster />
-				<Analytics />
-				<SpeedInsights />
 				<VisualEditingControls />
 			</body>
 		</html>
