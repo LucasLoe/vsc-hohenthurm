@@ -2,7 +2,7 @@ import React from 'react'
 import RegistrationFormTournament2024 from './form'
 import client from '@/lib/sanity/client'
 import Img from '@/ui/Img'
-import { Content, Title } from './client'
+import { Content, DateCountdown, Title } from './client'
 
 type VolleyballPage = {
 	heading: string
@@ -54,7 +54,7 @@ const page = async () => {
 							</div>
 						</div>
 						<Title title={pageData?.heading} />
-
+						<DateCountdown date="2025-06-06" />
 						<Content content={pageData?.content} />
 					</div>
 					<div className="mx-auto flex w-full place-items-center md:w-1/2">
