@@ -29,6 +29,8 @@ export default async function RootLayout({
 				<Footer />
 				<Toaster />
 				<VisualEditingControls />
+				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	)
