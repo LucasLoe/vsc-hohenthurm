@@ -3,6 +3,7 @@ import processUrl from '@/lib/processUrl'
 import { stegaClean } from '@sanity/client/stega'
 import { Button } from '@/components/ui/button'
 import { ExternalLink } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function CTA({
 	link,
@@ -29,7 +30,7 @@ export default function CTA({
 
 	if (link?.type === 'internal' && link.internal)
 		return (
-			<Button asChild variant={variant} className="no-underline">
+			<Button asChild variant={variant} className={cn('no-underline')}>
 				<Link
 					href={processUrl(link.internal, {
 						base: false,

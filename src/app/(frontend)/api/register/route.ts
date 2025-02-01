@@ -40,8 +40,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 	const recaptchaData = await recaptchaRes.json()
 
-	console.log(recaptchaData)
-
 	if (!recaptchaData.success) {
 		return new Response('Invalid reCAPTCHA', { status: 400 })
 	}
