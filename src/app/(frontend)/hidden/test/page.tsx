@@ -1,16 +1,36 @@
-'use client'
-
+import dynamic from 'next/dynamic'
 import { Card, CardContent, CardTitle } from '@/components/ui/card'
-import ChartAge from '@/ui/member-charts/chart-age'
-import ChartLocation from '@/ui/member-charts/chart-location'
 import React from 'react'
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from '@/components/ui/carousel'
+
+const ChartAge = dynamic(() => import('@/ui/member-charts/chart-age'), {
+	ssr: false,
+})
+const ChartLocation = dynamic(
+	() => import('@/ui/member-charts/chart-location'),
+	{
+		ssr: false,
+	},
+)
+const Carousel = dynamic(
+	() => import('@/components/ui/carousel').then((mod) => mod.Carousel),
+	{ ssr: false },
+)
+const CarouselContent = dynamic(
+	() => import('@/components/ui/carousel').then((mod) => mod.CarouselContent),
+	{ ssr: false },
+)
+const CarouselItem = dynamic(
+	() => import('@/components/ui/carousel').then((mod) => mod.CarouselItem),
+	{ ssr: false },
+)
+const CarouselNext = dynamic(
+	() => import('@/components/ui/carousel').then((mod) => mod.CarouselNext),
+	{ ssr: false },
+)
+const CarouselPrevious = dynamic(
+	() => import('@/components/ui/carousel').then((mod) => mod.CarouselPrevious),
+	{ ssr: false },
+)
 
 const Page = () => {
 	return (

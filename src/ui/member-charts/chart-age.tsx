@@ -1,3 +1,5 @@
+'use client'
+
 import { ChartConfig, ChartContainer } from '@/components/ui/chart'
 import React from 'react'
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts'
