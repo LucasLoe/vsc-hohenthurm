@@ -34,6 +34,12 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'colorOnMobile',
+			type: 'boolean',
+			description: 'Color the textbox (dark bg, white text) on mobile screens',
+			initialValue: false,
+		}),
+		defineField({
 			name: 'image',
 			type: 'image',
 			options: {

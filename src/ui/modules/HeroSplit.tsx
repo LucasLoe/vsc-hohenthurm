@@ -4,6 +4,7 @@ import Reputation from '@/ui/Reputation'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 import CTA from '../CTA'
+import { text } from 'stream/consumers'
 
 export default function HeroSplit({
 	pretitle,
@@ -11,9 +12,11 @@ export default function HeroSplit({
 	ctas,
 	reputation,
 	image,
+	colorOnMobile,
 }: Partial<{
 	pretitle: string
 	content: any
+	colorOnMobile: boolean
 	ctas: Sanity.CTA[]
 	reputation: Sanity.Reputation
 	image: Sanity.Image & {
@@ -31,21 +34,42 @@ export default function HeroSplit({
 				)}
 			>
 				<Img
-					className="mx-auto h-auto w-full max-w-80 rounded object-cover"
+					className="mx-auto h-auto w-full max-w-64 rounded object-cover md:max-w-80"
 					image={image}
 					imageWidth={800}
 				/>
 			</figure>
 
-			<div className="flex w-full flex-col justify-center bg-vsc-bg-dark p-8 md:block md:max-w-lg md:bg-inherit md:p-0 [&_:is(h1,h2)]:text-balance">
-				<div className="text-white md:text-inherit">
-					<Pretitle>{pretitle}</Pretitle>
-				</div>
-				<div className="text-sm text-white md:text-base md:text-inherit">
+			<div
+				className={cn(
+					'flex w-full flex-col justify-center p-8 md:block md:max-w-lg md:p-0 [&_:is(h1,h2)]:text-balance',
+					colorOnMobile
+						? 'bg-vsc-bg-dark shadow-lg md:bg-inherit md:shadow-none'
+						: 'bg-inherit',
+				)}
+			>
+				{pretitle ? (
+					<div
+						className={
+							colorOnMobile ? 'text-white md:text-inherit' : 'text-inherit'
+						}
+					>
+						<Pretitle>{pretitle}</Pretitle>
+					</div>
+				) : null}
+				<div
+					className={cn(
+						'text-sm md:text-base',
+						colorOnMobile ? 'text-white md:text-inherit' : 'text-inherit',
+					)}
+				>
 					<PortableText value={content} />
 				</div>
 				<Reputation
-					className="!mt-4 text-white md:text-inherit"
+					className={cn(
+						'!mt-4',
+						colorOnMobile ? 'text-white md:text-inherit' : 'text-inherit',
+					)}
 					reputation={reputation}
 				/>
 				<div className="flex flex-wrap place-items-center justify-center gap-[.5em] md:hidden md:justify-start">
