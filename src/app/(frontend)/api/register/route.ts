@@ -1,10 +1,19 @@
 import client from '@/lib/sanity/client'
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 
-const resend = new Resend(process.env.RESEND)
 const clientWithToken = client.withConfig({
 	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
+})
+
+const transporter = nodemailer.createTransport({
+	host: process.env.EMAIL_HOST,
+	port: parseInt(process.env.EMAIL_PORT || '587'),
+	secure: false,
+	auth: {
+		user: process.env.EMAIL_USER,
+		pass: process.env.EMAIL_PASSWORD,
+	},
 })
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -23,12 +32,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		recaptchaToken,
 	} = body
 
-	// Honeypot check
 	if (h) {
 		return new Response('Success', { status: 200 })
 	}
 
-	// Verify reCAPTCHA
 	const recaptchaRes = await fetch(
 		'https://www.google.com/recaptcha/api/siteverify',
 		{
@@ -55,26 +62,23 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			submittedAt: new Date().toISOString(),
 		})
 
-		// Email to participant
-		await resend.emails.send({
-			from: 'noreply@mail.vsc-hohenthurm.de',
+		await transporter.sendMail({
+			from: process.env.EMAIL_USER,
 			replyTo: 'info@vsc-hohenthurm.de',
 			to: contact,
-			subject: `Anmeldebestätigung - VSC Hohenthurm${teamName}`,
+			subject: `Anmeldebestätigung - VSC Hohenthurm ${teamName}`,
 			html: `
-       <h1>Super, dass ihr dabei seid! 🎉</h1>
+       <h2>Super, dass ihr dabei seid! 🎉</h2>
        
        <p>Hey ${contactPerson}!</p>
        
-       <p>Danke für eure Anmeldung mit dem Team "${teamName}"! Wir freuen uns schon total darauf, euch dabei zu haben.</p>
+       <p>Danke für eure Anmeldung mit dem Team "${teamName}"! Wir freuen uns schon total darauf, euch dabei zu haben. 🏐</p>
        
-       <h2>Eure Anmeldung auf einen Blick:</h2>
-       <ul>
-         <li>Team: ${teamName}</li>
-         <li>Spieleranzahl: ${playerCount}</li>
-         <li>Kontakt: ${contact}</li>
-         ${notes ? `<li>Notizen: ${notes}</li>` : ''}
-       </ul>
+       <h3>Eure Anmeldung auf einen Blick:</h3>
+         - Team: ${teamName}
+         - Spieleranzahl: ${playerCount}
+         - Kontakt: ${contact}
+         ${notes ? `- Notizen: ${notes}` : ''}
 
        <p>Wir melden uns in den nächsten Tagen bei euch mit allen weiteren Details! Falls ihr vorher schon Fragen habt, meldet euch bitte unter info@vsc-hohenthurm.de .</p>
        
@@ -84,8 +88,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		})
 
 		// Copy to admin
-		await resend.emails.send({
-			from: 'noreply@info.vsc-hohenthurm.de',
+		await transporter.sendMail({
+			from: process.env.EMAIL_USER,
 			replyTo: 'info@vsc-hohenthurm.de',
 			to: 'info@vsc-hohenthurm.de',
 			subject: `Neue Anmeldung: ${teamName}`,
@@ -94,7 +98,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
        
        <p>Ein neues Team ist dabei:</p>
        
-       <h2>Die Details:</h2>
+       <h3>Die Details:</h3>
        <ul>
          <li>Team: ${teamName}</li>
          <li>Kontaktperson: ${contactPerson}</li>
