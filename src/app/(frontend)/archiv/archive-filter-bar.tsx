@@ -7,7 +7,6 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
 const categories = [
-	{ slug: 'volleyball', title: 'Volleyball' },
 	{ slug: 'mixed', title: 'Mixed' },
 	{ slug: 'herren', title: 'Herren' },
 	{ slug: 'events', title: 'Events' },

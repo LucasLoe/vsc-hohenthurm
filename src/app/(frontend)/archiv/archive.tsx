@@ -8,7 +8,6 @@ import { Frown } from 'lucide-react'
 
 const Archive = ({
 	posts,
-	categories,
 }: {
 	posts: Sanity.BlogPost[]
 	categories: Sanity.BlogCategory[]

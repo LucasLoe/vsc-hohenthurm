@@ -4,33 +4,24 @@ import { ChartConfig, ChartContainer } from '@/components/ui/chart'
 import React from 'react'
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts'
 
-const ageRange = [
-	{ range: 'under_18', Mitglieder: 0 },
-	{ range: '18_to_25', Mitglieder: 3 },
-	{ range: '25_to_35', Mitglieder: 13 },
-	{ range: '35_to_45', Mitglieder: 8 },
-	{ range: '45_to_60', Mitglieder: 5 },
-	{ range: 'over_60', Mitglieder: 4 },
-]
-
 const chartConfig = {
 	under_18: {
 		label: 'u18',
 		color: '#262A2B',
 	},
-	'18_to_25': {
+	age_18_to_25: {
 		label: '18-25',
 		color: '#262A2B',
 	},
-	'25_to_35': {
+	age_25_to_35: {
 		label: '25-35',
 		color: '#262A2B',
 	},
-	'35_to_45': {
+	age_35_to_45: {
 		label: '35-45',
 		color: '#262A2B',
 	},
-	'45_to_60': {
+	age_45_to_60: {
 		label: '45-60',
 		color: '#262A2B',
 	},
@@ -40,14 +31,35 @@ const chartConfig = {
 	},
 } satisfies ChartConfig
 
-const ChartAge = () => {
+const ageRangeOrder = [
+	'under_18',
+	'age_18_to_25',
+	'age_25_to_35',
+	'age_35_to_45',
+	'age_45_to_60',
+	'over_60',
+] as const
+
+const ChartAge = ({
+	ageDistribution,
+}: {
+	ageDistribution: {
+		under_18: number
+		age_18_to_25: number
+		age_25_to_35: number
+		age_35_to_45: number
+		age_45_to_60: number
+		over_60: number
+	}
+}) => {
+	const ageData = ageRangeOrder.map((key) => ({
+		range: key,
+		Mitglieder: ageDistribution[key as keyof typeof ageDistribution],
+	}))
+
 	return (
-		<ChartContainer
-			config={chartConfig}
-			className="h-[320px] w-full max-w-[600px]"
-		>
-			<BarChart accessibilityLayer data={ageRange}>
-				<CartesianGrid vertical={false} />
+		<ChartContainer config={chartConfig} className="h-full w-full">
+			<BarChart accessibilityLayer data={ageData}>
 				<XAxis
 					dataKey="range"
 					tickLine={false}

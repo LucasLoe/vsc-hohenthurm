@@ -51,6 +51,7 @@ export default defineType({
 				{ type: 'testimonial.featured' },
 				{ type: 'vsc-boardmembers' },
 				{ type: 'timeline' },
+				{ type: 'vereinInZahlen' },
 			],
 			options: {
 				insertMenu: {
@@ -75,6 +76,7 @@ export default defineType({
 								'vsc-boardmembers',
 								'imageGallery',
 								'timeline',
+								'vereinInZahlen',
 							],
 						},
 					],

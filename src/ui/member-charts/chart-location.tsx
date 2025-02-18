@@ -17,18 +17,29 @@ const volleyballIcon = new Icon({
 	iconAnchor: [12, 12],
 })
 
-const gemeindeData = [
-	{ location: 'Halle (Saale)', value: 14 },
-	{ location: 'Landsberg', value: 10 },
-	{ location: 'Kabelsketal', value: 2 },
-	{ location: 'Merseburg', value: 1 },
-	{ location: 'Leipzig', value: 1 },
-	{ location: 'Anderes', value: 5 }, // Updated to 5
-]
-
-const MapComponent = () => {
+const MapComponent = ({
+	geographicDistribution,
+}: {
+	geographicDistribution: {
+		halleSaale: number
+		landsberg: number
+		kabelsketal: number
+		merseburg: number
+		leipzig: number
+		anderes: number
+	}
+}) => {
 	const position: LatLngExpression = [51.42, 12.05]
 	const zoom = 9
+
+	const gemeindeData = [
+		{ location: 'Halle (Saale)', value: geographicDistribution.halleSaale },
+		{ location: 'Landsberg', value: geographicDistribution.landsberg },
+		{ location: 'Kabelsketal', value: geographicDistribution.kabelsketal },
+		{ location: 'Merseburg', value: geographicDistribution.merseburg },
+		{ location: 'Leipzig', value: geographicDistribution.leipzig },
+		{ location: 'Anderes', value: geographicDistribution.anderes },
+	]
 
 	const bounds = {
 		type: 'Feature',
@@ -56,11 +67,11 @@ const MapComponent = () => {
 			type: 'Polygon',
 			coordinates: [
 				[
-					[11.73, 51.23],
-					[11.78, 51.23],
-					[11.78, 51.255],
-					[11.73, 51.255],
-					[11.73, 51.23],
+					[11.63, 51.28],
+					[11.68, 51.28],
+					[11.68, 51.31],
+					[11.63, 51.31],
+					[11.63, 51.28],
 				],
 			],
 		},
@@ -109,65 +120,74 @@ const MapComponent = () => {
 	}
 
 	return (
-		<div className="h-[320px] w-full overflow-hidden">
-			<MapContainer
-				center={position}
-				zoom={zoom}
-				zoomControl={false}
-				scrollWheelZoom={false}
-				style={{ height: '100%', width: '100%' }}
-			>
-				<GeoJSON
-					data={bounds as any}
-					style={{
-						fillColor: '#FFFFFF',
-						fillOpacity: 1,
-						weight: 0,
-					}}
-				/>
+		<MapContainer
+			center={position}
+			zoom={zoom}
+			zoomControl={false}
+			scrollWheelZoom={false}
+			style={{ height: 'calc(100% - 2rem)', width: '100%' }}
+		>
+			<GeoJSON
+				data={bounds as any}
+				style={{
+					fillColor: '#FFFFFF',
+					fillOpacity: 1,
+					weight: 0,
+				}}
+			/>
 
-				<TileLayer
-					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-					eventHandlers={{
-						add: (e) => {
-							const path = e.target._container
-							if (path) {
-								path.setAttribute('mask', 'url(#mask)')
-							}
-						},
-					}}
-				/>
+			<TileLayer
+				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+				eventHandlers={{
+					add: (e) => {
+						const path = e.target._container
+						if (path) {
+							path.setAttribute('mask', 'url(#mask)')
+						}
+					},
+				}}
+			/>
 
-				<svg height="0" width="0" style={{ position: 'absolute' }}>
-					<defs>
-						<mask id="mask">
-							<GeoJSON
-								data={combinedGeoData as GeoJsonObject}
-								style={{
-									fillColor: '#ffffff',
-									fillOpacity: 1,
-									weight: 0,
-								}}
-							/>
-						</mask>
-					</defs>
-				</svg>
+			<svg height="0" width="0" style={{ position: 'absolute' }}>
+				<defs>
+					<mask id="mask">
+						<GeoJSON
+							data={combinedGeoData as GeoJsonObject}
+							style={{
+								fillColor: '#ffffff',
+								fillOpacity: 1,
+								weight: 0,
+							}}
+						/>
+					</mask>
+				</defs>
+			</svg>
 
-				<GeoJSON
-					data={combinedGeoData as GeoJsonObject}
-					style={styleFunction}
-					onEachFeature={onEachFeature}
-				/>
+			<GeoJSON
+				data={combinedGeoData as GeoJsonObject}
+				style={styleFunction}
+				onEachFeature={onEachFeature}
+			/>
 
-				<Marker position={[51.5157613, 12.0953843]} icon={volleyballIcon}>
-					<Popup>Turnhalle Hohenthurm</Popup>
-				</Marker>
-			</MapContainer>
-		</div>
+			<Marker position={[51.5157613, 12.0953843]} icon={volleyballIcon}>
+				<Popup>Turnhalle Hohenthurm</Popup>
+			</Marker>
+		</MapContainer>
 	)
 }
 
-export default function Location() {
+export default function Location({
+	geographicDistribution,
+}: {
+	geographicDistribution: {
+		halleSaale: number
+		landsberg: number
+		kabelsketal: number
+		merseburg: number
+		leipzig: number
+		anderes: number
+	}
+}) {
 	const Map = dynamic(() => Promise.resolve(MapComponent), {
 		loading: () => <p>Karte wird geladen...</p>,
 		ssr: false,
@@ -189,7 +209,7 @@ export default function Location() {
 						1px 1px 0 #fff;
 				}
 			`}</style>
-			<Map />
+			<Map geographicDistribution={geographicDistribution} />
 		</>
 	)
 }

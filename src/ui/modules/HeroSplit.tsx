@@ -4,7 +4,6 @@ import Reputation from '@/ui/Reputation'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 import CTA from '../CTA'
-import { text } from 'stream/consumers'
 
 export default function HeroSplit({
 	pretitle,
@@ -25,7 +24,7 @@ export default function HeroSplit({
 	}
 }>) {
 	return (
-		<section className="section grid max-w-5xl items-center justify-center gap-y-8 px-0 py-4 md:grid-cols-2 md:justify-between md:gap-6 md:gap-x-12 md:px-8">
+		<section className="section grid max-w-5xl items-start justify-center gap-y-8 px-0 py-4 md:grid-cols-2 md:justify-between md:gap-6 md:gap-x-12 md:px-8">
 			<figure
 				className={cn(
 					'',

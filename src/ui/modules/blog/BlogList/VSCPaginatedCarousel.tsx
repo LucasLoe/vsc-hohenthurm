@@ -14,6 +14,7 @@ import { ComponentInstanceIcon } from '@radix-ui/react-icons'
 import { FaVolleyball } from 'react-icons/fa6'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 type VSCPaginatedCarouselProps = {
 	posts: Sanity.BlogPost[]
@@ -88,10 +89,15 @@ const VSCPaginatedCarousel = ({ posts }: VSCPaginatedCarouselProps) => {
 						/>
 					))}
 				</div>
-				<div className="flex w-full items-center justify-end gap-x-2 text-white">
-					<ArrowRight className="size-5" />
-					<Link href="/archiv">Zum Archiv</Link>
-				</div>
+				<Button
+					variant="outline"
+					className="ml-auto mt-8 flex w-fit items-center justify-end gap-x-1 border-[1px] border-white px-2 font-light text-white"
+				>
+					<ArrowRight className="size-4 sm:size-5" />
+					<Link className="text-xs sm:text-base" href="/archiv">
+						Zum Archiv
+					</Link>
+				</Button>
 			</BlueGeometric>
 		</div>
 	)

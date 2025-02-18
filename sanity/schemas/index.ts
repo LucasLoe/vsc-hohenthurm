@@ -52,6 +52,7 @@ import imageGallery from './modules/image-gallery'
 // api
 import registration from './api/registration'
 import tournament from './tournament/tournament'
+import vereinInZahlen from './modules/verein-in-zahlen'
 
 export const schemaTypes = [
 	// documents
@@ -114,4 +115,7 @@ export const schemaTypes = [
 
 	//tournament
 	tournament,
+
+	// verein in zahlen
+	vereinInZahlen,
 ]

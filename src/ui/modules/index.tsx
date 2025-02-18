@@ -26,6 +26,7 @@ import Heading from '../atoms/heading'
 import Spacing from '../atoms/spacing'
 import ImageGallery from './ImageGallery'
 import Timeline from './Timeline'
+import VereinInZahlenHero from '../member-charts/verein-in-zahlen'
 
 export default function Modules({
 	modules,
@@ -108,6 +109,9 @@ export default function Modules({
 					case 'timeline':
 						//@ts-ignore
 						return <Timeline {...module} key={module._key} />
+					case 'vereinInZahlen':
+						//@ts-ignore
+						return <VereinInZahlenHero {...module} key={module._key} />
 					default:
 						return <div data-type={module._type} key={module._key} />
 				}
