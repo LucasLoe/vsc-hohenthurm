@@ -238,7 +238,7 @@ const ExternalNavItem = ({
 			>
 				{icon}
 			</DialogTrigger>
-			<DialogContent className="max-w-80 sm:max-w-96">
+			<DialogContent className="z-[1000000] max-w-80 sm:max-w-96">
 				<DialogHeader>
 					<DialogTitle>Weiterleitung:</DialogTitle>
 					<DialogDescription className="py-4">{text}</DialogDescription>
