@@ -29,7 +29,7 @@ const MapComponent = ({
 		anderes: number
 	}
 }) => {
-	const position: LatLngExpression = [51.42, 12.05]
+	const position: LatLngExpression = [51.42, 12.2]
 
 	const gemeindeData = [
 		{ location: 'Halle (Saale)', value: geographicDistribution.halleSaale },
@@ -66,11 +66,11 @@ const MapComponent = ({
 			type: 'Polygon',
 			coordinates: [
 				[
-					[11.63, 51.28],
 					[11.68, 51.28],
+					[11.73, 51.28],
+					[11.73, 51.31],
 					[11.68, 51.31],
-					[11.63, 51.31],
-					[11.63, 51.28],
+					[11.68, 51.28],
 				],
 			],
 		},
@@ -123,8 +123,8 @@ const MapComponent = ({
 			dragging={false}
 			touchZoom={false}
 			center={position}
-			zoom={8.5}
-			zoomSnap={0.5}
+			zoom={8.4}
+			zoomSnap={0.1}
 			zoomControl={false}
 			scrollWheelZoom={false}
 			style={{ height: 'calc(100% - 2rem)', width: '100%' }}
