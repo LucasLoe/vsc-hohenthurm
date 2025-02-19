@@ -2,6 +2,7 @@ import React from 'react'
 import { Roboto_Slab } from 'next/font/google'
 import { TriangleRightIcon } from '@radix-ui/react-icons'
 import { LuMapPin } from 'react-icons/lu'
+import { cn } from '@/lib/utils'
 
 const roboto = Roboto_Slab({ subsets: ['latin'] })
 
@@ -75,6 +76,14 @@ const DateField = (props: { date: string }) => {
 }
 
 const InfoField = (props: { matches: MatchSchedule['matches'][0] }) => {
+	const homeScore = parseInt(props.matches.result?.split(':')[0] || '0')
+	const guestScore = parseInt(props.matches.result?.split(':')[1] || '0')
+
+	const vscIsHomeTeam = props.matches.homeTeam.includes('VSC')
+
+	const vscScore = vscIsHomeTeam ? homeScore : guestScore
+	const opponentScore = vscIsHomeTeam ? guestScore : homeScore
+
 	return (
 		<div className="relative z-0 -ml-4 mt-2 h-20 grow rounded bg-vsc-bg-dark/10 py-2 pl-8 shadow">
 			<p className="sm:text-md truncate pr-2 text-sm font-medium text-vsc-bg-dark xl:text-lg">
@@ -87,15 +96,23 @@ const InfoField = (props: { matches: MatchSchedule['matches'][0] }) => {
 				{props.matches.time}
 			</p>
 			{props.matches.result ? (
-				<ResultField result={props.matches.result} />
+				<ResultField
+					result={props.matches.result}
+					vscWon={vscScore > opponentScore}
+				/>
 			) : null}
 		</div>
 	)
 }
 
-const ResultField = (props: { result: string }) => {
+const ResultField = (props: { result: string; vscWon: boolean }) => {
 	return (
-		<p className="absolute -bottom-2 -right-2 z-10 h-10 w-fit rounded bg-vsc-blue px-2 py-2 text-lg font-medium text-vsc-bg-dark shadow-lg sm:-bottom-4 sm:-right-4">
+		<p
+			className={cn(
+				'absolute -bottom-2 -right-2 z-10 h-10 w-fit rounded px-2 py-2 text-lg font-medium text-vsc-bg-dark shadow-lg sm:-bottom-4 sm:-right-4',
+				props.vscWon ? 'bg-vsc-blue' : 'bg-vsc-pink',
+			)}
+		>
 			{props.result}
 		</p>
 	)
