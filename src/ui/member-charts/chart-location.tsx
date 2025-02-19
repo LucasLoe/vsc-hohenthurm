@@ -30,7 +30,6 @@ const MapComponent = ({
 	}
 }) => {
 	const position: LatLngExpression = [51.42, 12.05]
-	const zoom = 9
 
 	const gemeindeData = [
 		{ location: 'Halle (Saale)', value: geographicDistribution.halleSaale },
@@ -121,8 +120,11 @@ const MapComponent = ({
 
 	return (
 		<MapContainer
+			dragging={false}
+			touchZoom={false}
 			center={position}
-			zoom={zoom}
+			zoom={8.5}
+			zoomSnap={0.5}
 			zoomControl={false}
 			scrollWheelZoom={false}
 			style={{ height: 'calc(100% - 2rem)', width: '100%' }}
