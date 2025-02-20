@@ -24,7 +24,7 @@ export default function HeroSplit({
 	}
 }>) {
 	return (
-		<section className="section grid max-w-5xl items-start justify-center gap-y-8 px-0 py-4 md:grid-cols-2 md:justify-between md:gap-6 md:gap-x-12 md:px-8">
+		<section className="section grid max-w-5xl items-start justify-center gap-y-8 px-0 py-4 md:grid-cols-2 md:justify-between md:gap-6 md:gap-x-12 md:px-8 md:py-8">
 			<figure
 				className={cn(
 					'',
@@ -71,12 +71,12 @@ export default function HeroSplit({
 					)}
 					reputation={reputation}
 				/>
-				<div className="flex flex-wrap place-items-center justify-center gap-[.5em] md:hidden md:justify-start">
+				<div className="mt-6 flex flex-wrap place-items-center justify-center gap-[.5em] md:hidden md:justify-start">
 					{ctas?.map((cta, key) => (
 						<CTA key={key} {...cta} style={'default'} />
 					))}
 				</div>
-				<div className="hidden flex-wrap place-items-center justify-center gap-[.5em] md:flex md:justify-start">
+				<div className="mt-6 hidden flex-wrap place-items-center justify-center gap-[.5em] md:flex md:justify-start">
 					{ctas?.map((cta, key) => <CTA key={key} {...cta} />)}
 				</div>
 			</div>
