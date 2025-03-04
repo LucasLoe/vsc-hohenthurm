@@ -1,15 +1,12 @@
 import React from 'react'
 import RegistrationFormTournament2024 from './form'
 import client from '@/lib/sanity/client'
-import Img from '@/ui/Img'
-import { Content, DateCountdown, Title } from './client'
 import Image from 'next/image'
-import { CheckCircle } from 'lucide-react'
+import { PortableText } from 'next-sanity'
 
 type VolleyballPage = {
 	heading: string
 	identifier: string
-	images: any[]
 	content: any[]
 }
 
@@ -39,7 +36,9 @@ const TournamentPage = async () => {
 						</h2>
 
 						<div className="space-y-4 rounded-xl border border-white/20 bg-black/50 p-6 text-sm backdrop-blur-md">
-							<Content content={pageData?.content} />
+							<div className="md:pr-2 md:text-left">
+								<PortableText value={pageData?.content} />
+							</div>
 						</div>
 					</div>
 

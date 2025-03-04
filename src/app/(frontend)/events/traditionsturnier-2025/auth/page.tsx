@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import Image from 'next/image'
-import type { FormEvent } from 'react'
 
 export default function TournamentPassword() {
 	const router = useRouter()

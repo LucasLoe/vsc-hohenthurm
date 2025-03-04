@@ -9,10 +9,7 @@ export default async function Page({
 }) {
 	const isAuthorized = verifyToken(searchParams.token || null)
 
-	if (!isAuthorized) {
-		// Get the current segment from runtime property
-		redirect('./traditionsturnier-2025/auth')
-	}
+	if (!isAuthorized) redirect('./traditionsturnier-2025/auth')
 
 	return <TournamentPage />
 }

@@ -1,6 +1,4 @@
 export function generateToken(password: string) {
-	console.log('Provided password:', password)
-	console.log('Correct password:', process.env.VSC_TOURNAMENT_2025)
 	const correctPassword = process.env.VSC_TOURNAMENT_2025
 	if (password !== correctPassword) return null
 
