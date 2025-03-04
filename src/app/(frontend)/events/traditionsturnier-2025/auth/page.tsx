@@ -1,6 +1,5 @@
 'use client'
 
-import type React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Shield, ArrowRight } from 'lucide-react'
@@ -15,6 +14,7 @@ import {
 } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import Image from 'next/image'
+import type { FormEvent } from 'react'
 
 export default function TournamentPassword() {
 	const router = useRouter()
