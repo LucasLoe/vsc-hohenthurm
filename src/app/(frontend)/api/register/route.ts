@@ -36,6 +36,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		return new Response('Success', { status: 200 })
 	}
 
+	const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+		contact,
+	)
+	const isPhone = /^[\d\s\+\-()]{6,}$/.test(contact)
+
+	if (!isEmail && !isPhone) {
+		return new Response('Ungültige E-Mail-Adresse oder Telefonnummer', {
+			status: 400,
+		})
+	}
+
 	const recaptchaRes = await fetch(
 		'https://www.google.com/recaptcha/api/siteverify',
 		{
@@ -68,7 +79,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			to: contact,
 			subject: `Anmeldebestätigung - VSC Hohenthurm ${teamName}`,
 			html: `
-       <h2>Super, dass ihr dabei seid! 🎉</h2>
+       <h3>Super, dass ihr dabei seid! 🎉</h3>
        
        <p>Hey ${contactPerson}!</p>
        

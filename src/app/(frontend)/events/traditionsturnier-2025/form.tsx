@@ -119,8 +119,10 @@ export default function RegistrationForm() {
 						<Input
 							className="border-white/10 bg-white/20 text-white placeholder:text-white/50"
 							name="playerCount"
-							type="number"
+							type="text"
 							required
+							pattern="[0-9]*"
+							inputMode="numeric"
 						/>
 					</div>
 
