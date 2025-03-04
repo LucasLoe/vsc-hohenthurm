@@ -47,7 +47,7 @@ export default function RegistrationForm() {
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
 
 	const registerActionWithRecaptcha = async (
-		_: FormState,
+		prevState: FormState,
 		formData: FormData,
 	): Promise<FormState> => {
 		try {
@@ -73,7 +73,12 @@ export default function RegistrationForm() {
 			if (res.ok) {
 				return { success: true, message: 'Registration successful' }
 			}
-			return { success: false, message: 'Registration failed' }
+
+			const errorData = await res.json().catch(() => ({}))
+			return {
+				success: false,
+				message: errorData.error || 'Registration failed',
+			}
 		} catch (err) {
 			return { success: false, message: 'Error submitting form' }
 		}
@@ -165,6 +170,11 @@ export default function RegistrationForm() {
 						className="hidden"
 					/>
 				</div>
+				{state.message && !state.success && (
+					<div className="rounded bg-red-500/80 px-3 py-2 text-sm text-white">
+						{state.message}
+					</div>
+				)}
 				<div className="flex items-center py-2">
 					<SubmitButton />
 				</div>
