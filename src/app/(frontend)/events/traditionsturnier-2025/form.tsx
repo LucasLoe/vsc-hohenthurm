@@ -13,7 +13,7 @@ function SubmitButton() {
 	const { pending } = useFormStatus()
 	return (
 		<Button
-			className="ml-auto rounded-none bg-gradient-to-r from-vsc-blue to-emerald-300 transition-all duration-200 hover:scale-[1.05] hover:from-cyan-300 hover:to-emerald-400 hover:shadow-md"
+			className="ml-auto bg-gradient-to-r from-vsc-blue to-emerald-300 transition-all duration-200 hover:scale-[1.05] hover:from-cyan-300 hover:to-emerald-400 hover:shadow-md"
 			variant="secondary"
 			type="submit"
 			disabled={pending}
@@ -96,75 +96,77 @@ export default function RegistrationForm() {
 	}
 
 	return (
-		<form action={formAction} className="mx-auto w-full max-w-md space-y-6">
-			<div className="flex place-items-center gap-x-2 text-vsc-pink">
-				<Heart className="inline-block size-4" />
-				<h2 className="my-0 text-lg font-light tracking-wider">
-					Hier meldet ihr euch an:
-				</h2>
-			</div>
-			<div className="space-y-4">
-				<div>
-					<Label className="font-light text-slate-200">Team-Name</Label>
-					<Input
-						className="rounded-none border-slate-400"
-						name="teamName"
-						required
-					/>
+		<div className="w-full max-w-full rounded-xl border border-white/20 bg-black/50 p-6 backdrop-blur-md">
+			<form action={formAction} className="w-full space-y-2">
+				<div className="flex place-items-center gap-x-2 text-xl font-extrabold text-vsc-blue">
+					<Heart className="inline-block size-4" />
+					<h2 className="my-0 tracking-wider">Anmeldung:</h2>
+				</div>
+				<div className="space-y-4">
+					<div>
+						<Label className="font-light text-slate-200">Team-Name</Label>
+						<Input
+							className="border-white/10 bg-white/20 text-white placeholder:text-white/50"
+							name="teamName"
+							required
+						/>
+					</div>
+
+					<div>
+						<Label className="font-light text-slate-200">
+							Anzahl der Spieler:innen
+						</Label>
+						<Input
+							className="border-white/10 bg-white/20 text-white placeholder:text-white/50"
+							name="playerCount"
+							type="number"
+							required
+						/>
+					</div>
+
+					<div>
+						<Label className="font-light text-slate-200">Ansprechperson</Label>
+						<Input
+							className="border-white/10 bg-white/20 text-white placeholder:text-white/50"
+							name="contactPerson"
+							required
+						/>
+					</div>
+
+					<div>
+						<Label className="font-light text-slate-200">
+							Kontakt (E-Mail oder Telefon)
+						</Label>
+						<Input
+							className="border-white/10 bg-white/20 text-white placeholder:text-white/50"
+							name="contact"
+							required
+						/>
+					</div>
+
+					<div>
+						<Label className="font-light text-slate-200">Sonstiges</Label>
+						<Textarea
+							name="notes"
+							className="h-16 resize-none border-white/10 bg-white/20 text-white placeholder:text-white/50"
+						/>
+					</div>
 				</div>
 
-				<div>
-					<Label className="font-light text-slate-200">
-						Anzahl der Spieler:innen
-					</Label>
-					<Input
-						className="rounded-none border-slate-400"
-						name="playerCount"
-						type="number"
-						required
+				<Input name="h" type="text" className="hidden" />
+
+				<div className="relative">
+					<ReCAPTCHA
+						ref={recaptchaRef}
+						sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT!}
+						size="invisible"
+						className="hidden"
 					/>
 				</div>
-
-				<div>
-					<Label className="font-light text-slate-200">Ansprechperson</Label>
-					<Input
-						className="rounded-none border-slate-400"
-						name="contactPerson"
-						required
-					/>
+				<div className="flex items-center py-2">
+					<SubmitButton />
 				</div>
-
-				<div>
-					<Label className="font-light text-slate-200">
-						Kontakt (E-Mail oder Telefon)
-					</Label>
-					<Input
-						className="rounded-none border-slate-400"
-						name="contact"
-						required
-					/>
-				</div>
-
-				<div>
-					<Label className="font-light text-slate-200">Sonstiges</Label>
-					<Textarea
-						name="notes"
-						className="h-24 resize-none rounded-none border-slate-400"
-					/>
-				</div>
-			</div>
-
-			<Input name="h" type="text" className="hidden" />
-
-			<ReCAPTCHA
-				ref={recaptchaRef}
-				sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT!}
-				size="invisible"
-			/>
-
-			<div className="flex items-center">
-				<SubmitButton />
-			</div>
-		</form>
+			</form>
+		</div>
 	)
 }
