@@ -17,13 +17,6 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
-			name: 'images',
-			type: 'array',
-			description: 'Advertisement images - exactly 3!',
-			of: [defineArrayMember({ type: 'image' })],
-			validation: (Rule) => Rule.required().min(3).max(3),
-		}),
-		defineField({
 			name: 'content',
 			type: 'array',
 			of: [defineArrayMember({ type: 'block' })],

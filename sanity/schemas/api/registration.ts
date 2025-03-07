@@ -7,6 +7,10 @@ export default defineType({
 	type: 'document',
 	fields: [
 		{
+			name: 'tournament',
+			type: 'string',
+		},
+		{
 			name: 'teamName',
 			type: 'string',
 			validation: (Rule) => Rule.required(),

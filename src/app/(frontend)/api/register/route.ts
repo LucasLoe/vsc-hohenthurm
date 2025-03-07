@@ -23,6 +23,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 	const body = await req.json()
 	const {
+		tournament,
 		teamName,
 		playerCount,
 		contactPerson,
@@ -69,6 +70,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	try {
 		await clientWithToken.create({
 			_type: 'registration',
+			tournament,
 			teamName,
 			playerCount: parseInt(playerCount),
 			contact,
@@ -90,11 +92,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
        
        <p>Danke für eure Anmeldung mit dem Team "${teamName}"! Wir freuen uns schon total darauf, euch dabei zu haben. 🏐</p>
        
-       <h3>Eure Anmeldung auf einen Blick:</h3>
-         - Team: ${teamName}
-         - Spieleranzahl: ${playerCount}
-         - Kontakt: ${contact}
-         ${notes ? `- Notizen: ${notes}` : ''}
+       <h3>Eure Anmeldung auf einen Blick:</h3> <br/>
+         - Team: ${teamName} <br/>
+         - Spieleranzahl: ${playerCount} <br/>
+         - Kontakt: ${contact} <br/>
+         ${notes ? `- Notizen: ${notes}` : ''} <br/>
 
        <p>Wir melden uns in den nächsten Tagen bei euch mit allen weiteren Details! Falls ihr vorher schon Fragen habt, meldet euch bitte unter info@vsc-hohenthurm.de .</p>
        
@@ -115,6 +117,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
        
        <h3>Die Details:</h3>
        <ul>
+			 	 <li>Turnier: ${tournament}</li>
          <li>Team: ${teamName}</li>
          <li>Kontaktperson: ${contactPerson}</li>
          <li>Spieleranzahl: ${playerCount}</li>

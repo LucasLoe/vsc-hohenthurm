@@ -11,7 +11,7 @@ type VolleyballPage = {
 }
 
 const getVolleyballPage = async () => {
-	const query = `*[_type == "tournament" && identifier == "traditionsturnier-2025"][0]`
+	const query = `*[_type == "tournament" && identifier == "maiturnier-2025"][0]`
 	return await client.fetch<VolleyballPage>(query)
 }
 

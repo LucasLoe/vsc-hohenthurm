@@ -60,7 +60,7 @@ export default function RegistrationForm() {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					tournament: 'traditions-turnier-2025',
+					tournament: 'mai-turnier-2025',
 					teamName: formData.get('teamName'),
 					playerCount: formData.get('playerCount'),
 					contactPerson: formData.get('contactPerson'),
