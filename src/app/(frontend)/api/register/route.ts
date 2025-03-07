@@ -104,6 +104,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			from: process.env.EMAIL_USER,
 			replyTo: 'info@vsc-hohenthurm.de',
 			to: 'info@vsc-hohenthurm.de',
+			cc: 'rene.habegger@vsc-hohenthurm.de',
 			subject: `Neue Anmeldung: ${teamName}`,
 			html: `
        <h1>Neue Team-Anmeldung! 🎉</h1>
