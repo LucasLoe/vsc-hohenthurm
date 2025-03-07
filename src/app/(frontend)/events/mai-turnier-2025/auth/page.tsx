@@ -23,7 +23,7 @@ export default function TournamentPassword() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 
-		const res = await fetch('/api/verify-password', {
+		const res = await fetch('/api/verify-password-mai-turnier-2025', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ password }),

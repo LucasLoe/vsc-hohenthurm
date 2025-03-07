@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyToken } from '@/app/(frontend)/events/traditionsturnier-2025/protect'
+import { verifyToken } from '@/app/(frontend)/events/mai-turnier-2025/protect'
 
 export const runtime = 'edge'
 
