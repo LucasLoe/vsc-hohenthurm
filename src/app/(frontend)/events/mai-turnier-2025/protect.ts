@@ -1,5 +1,5 @@
 export function generateToken(password: string) {
-	const correctPassword = process.env.TRAD_VSC_TOURNAMENT_2025
+	const correctPassword = process.env.MAI_VSC_TOURNAMENT_2025
 	if (password !== correctPassword) return null
 
 	const token = Buffer.from(

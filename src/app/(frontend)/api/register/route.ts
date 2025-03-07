@@ -87,7 +87,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
        
        <p>Danke für eure Anmeldung mit dem Team "${teamName}"! Wir freuen uns schon total darauf, euch dabei zu haben. 🏐</p>
        
-       <h3>Eure Anmeldung auf einen Blick:</h3> <br/>
+       <p>Eure Anmeldung auf einen Blick:</p> <br/>
          - Team: ${teamName} <br/>
          - Spieleranzahl: ${playerCount} <br/>
          - Kontakt: ${contact} <br/>
