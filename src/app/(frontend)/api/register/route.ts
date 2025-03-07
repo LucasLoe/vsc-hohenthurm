@@ -40,16 +40,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
 		contact,
 	)
-	const isPhone = /^[\d\s\+\-()]{6,}$/.test(contact)
 
-	if (!isEmail && !isPhone) {
-		return new Response(
-			JSON.stringify({ error: 'Ungültige E-Mail-Adresse oder Telefonnummer' }),
-			{
-				status: 400,
-				headers: { 'Content-Type': 'application/json' },
-			},
-		)
+	if (!isEmail) {
+		return new Response(JSON.stringify({ error: 'Ungültige E-Mail-Adresse' }), {
+			status: 400,
+			headers: { 'Content-Type': 'application/json' },
+		})
 	}
 
 	const recaptchaRes = await fetch(
@@ -79,13 +75,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			submittedAt: new Date().toISOString(),
 		})
 
-		isEmail &&
-			(await transporter.sendMail({
-				from: process.env.EMAIL_USER,
-				replyTo: 'info@vsc-hohenthurm.de',
-				to: contact,
-				subject: `Anmeldebestätigung - VSC Hohenthurm ${teamName}`,
-				html: `
+		await transporter.sendMail({
+			from: process.env.EMAIL_USER,
+			replyTo: 'info@vsc-hohenthurm.de',
+			to: contact,
+			subject: `Anmeldebestätigung - VSC Hohenthurm ${teamName}`,
+			html: `
        <h3>Super, dass ihr dabei seid! 🎉</h3>
        
        <p>Hey ${contactPerson}!</p>
@@ -103,7 +98,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
        <p>Beste Grüße<br>
        Euer VSC Hohenthurm</p>
      `,
-			}))
+		})
 
 		await transporter.sendMail({
 			from: process.env.EMAIL_USER,

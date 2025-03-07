@@ -143,7 +143,7 @@ export default function RegistrationForm() {
 
 					<div>
 						<Label className="font-light text-slate-200">
-							Kontakt (E-Mail oder Telefon)
+							Kontakt (E-Mail)
 						</Label>
 						<Input
 							className="border-white/10 bg-white/20 text-white placeholder:text-white/50"
