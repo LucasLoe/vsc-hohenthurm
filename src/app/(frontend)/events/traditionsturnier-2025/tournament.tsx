@@ -19,7 +19,7 @@ const TournamentPage = async () => {
 	const pageData = await getVolleyballPage()
 
 	return (
-		<div className="relative min-h-[calc(100vh-2000px)] w-full border-t-2 border-white bg-vsc-bg-dark text-vsc-bg-light">
+		<div className="relative min-h-screen w-full border-t-2 border-white bg-vsc-bg-dark text-vsc-bg-light">
 			<Image
 				src={'/images/background.jpg'}
 				alt="Background"
