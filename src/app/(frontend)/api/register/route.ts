@@ -81,20 +81,22 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			to: contact,
 			subject: `Anmeldebestätigung - VSC Hohenthurm ${teamName}`,
 			html: `
-       <h3>Super, dass ihr dabei seid! 🎉</h3>
+       <h3>Super, dass ihr mitspielen wollt! 🎉</h3>
        
        <p>Hey ${contactPerson}!</p>
        
-       <p>Danke für eure Anmeldung mit dem Team "${teamName}"! Wir freuen uns schon total darauf, euch dabei zu haben. 🏐</p>
+       <p>Danke für eure Anmeldung mit dem Team "${teamName}"! Wir freuen uns schon total darauf, euch hoffentlich dabei zu haben. 🏐</p>
        
        <p>Eure Anmeldung auf einen Blick:</p> <br/>
+			 	 - Turnier: ${tournament} <br/>
          - Team: ${teamName} <br/>
          - Spieleranzahl: ${playerCount} <br/>
          - Kontakt: ${contact} <br/>
          ${notes ? `- Notizen: ${notes}` : ''} <br/>
 
-       <p>Wir melden uns in den nächsten Tagen bei euch mit allen weiteren Details! Falls ihr vorher schon Fragen habt, meldet euch bitte unter info@vsc-hohenthurm.de .</p>
-       
+       <p>Bitte habt noch ein wenig Geduld, wir müssen kurz prüfen, ob noch ausreichend Startplätze vorhanden sind. Wir melden uns in den nächsten Tagen bei euch. Bitte wartet mit der Überweisung der Startgebühr, bis ihr eine Bestätigung erhalten habt. </p>
+       <p>Falls ihr vorher schon Fragen habt, meldet euch bitte unter info@vsc-hohenthurm.de .</p>
+			 
        <p>Beste Grüße<br>
        Euer VSC Hohenthurm</p>
      `,
